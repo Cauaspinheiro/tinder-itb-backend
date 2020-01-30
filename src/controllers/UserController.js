@@ -7,38 +7,48 @@ export default {
     return res.json(users);
   },
 
-  async store(req, res) {
-    const {
-      name,
-      genero,
-      data_nascimento,
-      bio,
-      email,
-      email_itb,
-      detalhes,
-      contatos,
-      images,
-      show_me,
-      ano,
-      periodo,
-      sala
-    } = req.body;
+  async show(req, res) {
+    const _id = req.params.id;
 
-    const user = await User.create({
-      name,
-      genero,
-      data_nascimento,
-      bio,
-      email,
-      email_itb,
-      detalhes,
-      contatos,
-      images,
-      show_me,
-      ano,
-      periodo,
-      sala
-    });
+    const user = await User.findOne({ _id });
+
+    if (!user) return res.json("User not found");
+
+    return res.json(user);
+  },
+
+  async store(req, res) {
+    const { email_itb } = req.body;
+
+    let user = User.findOne({ email_itb });
+
+    if (user) return res.json("Usuário já existe");
+
+    user = await User.create(req.body);
+
+    return res.json(user);
+  },
+
+  async update(req, res) {
+    const _id = req.params.id;
+
+    let user = await User.findOne({ _id });
+
+    if (!user) return res.json("User not found");
+
+    user = await User.updateOne({ _id }, req.body, { new: true });
+
+    return res.json(user);
+  },
+
+  async destroy(req, res) {
+    const _id = req.params.id;
+
+    let user = await User.findOne({ _id });
+
+    if (!user) return res.json("User not found");
+
+    user = await User.deleteOne({ _id });
 
     return res.json(user);
   }
