@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -48,6 +48,11 @@ const UserSchema = new mongoose.Schema(
     },
     sala: {
       type: String,
+      required: true
+    },
+    escola: {
+      type: Schema.Types.ObjectId,
+      ref: "School",
       required: true
     }
   },
