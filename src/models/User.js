@@ -34,10 +34,6 @@ const UserSchema = new mongoose.Schema(
       type: Map,
       required: true
     },
-    images: {
-      type: [String],
-      required: true
-    },
     show_me: {
       type: Boolean,
       required: true
