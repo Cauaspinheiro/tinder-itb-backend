@@ -8,24 +8,29 @@ export default {
   },
 
   async show(req, res) {
-    return res.json(user);
+    return res.json(req.user);
   },
 
   async store(req, res) {
-    user = await User.create(req.body);
+    const user = await User.create(req.body);
 
     return res.json(user);
   },
 
   async update(req, res) {
-    user = await User.findOneAndUpdate({ _id }, req.body, { new: true });
+    const user = await User.findOneAndUpdate({ _id: req.user._id }, req.body, {
+      new: true
+    });
 
-    return res.json(user);
+    return await res.json({
+      "Old User": req.user.toJSON(),
+      "New User": user.toJSON()
+    });
   },
 
   async destroy(req, res) {
-    user = await User.findOneAndDelete({ _id });
+    await User.findOneAndRemove({ _id: req.user._id });
 
-    return res.json(user);
+    return res.json(req.user);
   }
 };
