@@ -1,7 +1,8 @@
 import { Router } from "express";
 import UserController from "./controllers/UserController";
 import SchoolController from "./controllers/SchoolController";
-import { checkUserExists, checkUserNotExists } from "./middlewares/checkUser";
+import checkUserExists from "./middlewares/checkUserExists";
+import checkUserNotExists from "./middlewares/checkUserNotExists";
 
 const routes = Router();
 
