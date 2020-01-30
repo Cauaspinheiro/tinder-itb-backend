@@ -20,9 +20,9 @@ export default {
   async store(req, res) {
     const { email_itb } = req.body;
 
-    let user = User.findOne({ email_itb });
+    let user = await User.findOne({ email_itb });
 
-    if (user == null) return res.json("Usuário já existe");
+    if (user) return res.json("Usuário já existe");
 
     user = await User.create(req.body);
 
