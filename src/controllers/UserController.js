@@ -22,7 +22,7 @@ export default {
 
     let user = User.findOne({ email_itb });
 
-    if (user) return res.json("Usuário já existe");
+    if (user == null) return res.json("Usuário já existe");
 
     user = await User.create(req.body);
 
@@ -36,7 +36,7 @@ export default {
 
     if (!user) return res.json("User not found");
 
-    user = await User.updateOne({ _id }, req.body, { new: true });
+    user = await User.findOneAndUpdate({ _id }, req.body, { new: true });
 
     return res.json(user);
   },
@@ -48,7 +48,7 @@ export default {
 
     if (!user) return res.json("User not found");
 
-    user = await User.deleteOne({ _id });
+    user = await User.findOneAndDelete({ _id });
 
     return res.json(user);
   }
