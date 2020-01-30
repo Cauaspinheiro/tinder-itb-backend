@@ -8,48 +8,29 @@ export default {
   },
 
   async show(req, res) {
-    const _id = req.params.id;
-
-    const user = await User.findOne({ _id });
-
-    if (!user) return res.json("User not found");
-
-    return res.json(user);
+    return res.json(req.user);
   },
 
   async store(req, res) {
-    const { email_itb } = req.body;
-
-    let user = await User.findOne({ email_itb });
-
-    if (user) return res.json("Usuário já existe");
-
-    user = await User.create(req.body);
+    const user = await User.create(req.body);
 
     return res.json(user);
   },
 
   async update(req, res) {
-    const _id = req.params.id;
+    const user = await User.findOneAndUpdate({ _id: req.user._id }, req.body, {
+      new: true
+    });
 
-    let user = await User.findOne({ _id });
-
-    if (!user) return res.json("User not found");
-
-    user = await User.findOneAndUpdate({ _id }, req.body, { new: true });
-
-    return res.json(user);
+    return await res.json({
+      "Old User": req.user.toJSON(),
+      "New User": user.toJSON()
+    });
   },
 
   async destroy(req, res) {
-    const _id = req.params.id;
+    await User.findOneAndRemove({ _id: req.user._id });
 
-    let user = await User.findOne({ _id });
-
-    if (!user) return res.json("User not found");
-
-    user = await User.findOneAndDelete({ _id });
-
-    return res.json(user);
+    return res.json(req.user);
   }
 };
