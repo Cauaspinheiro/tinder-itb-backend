@@ -1,64 +1,64 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
   {
     nome: {
       type: String,
-      required: true
+      required: true,
     },
     genero: {
       type: String,
-      required: true
+      required: true,
     },
     data_nascimento: {
       type: Date,
-      required: true
+      required: true,
     },
     bio: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
-      required: true
+      required: true,
     },
     email_itb: {
       type: String,
-      required: true
+      required: true,
     },
     detalhes: {
       type: Map,
-      required: true
+      required: true,
     },
     contatos: {
       type: Map,
-      required: true
+      required: true,
     },
     show_me: {
       type: Boolean,
-      required: true
+      required: true,
     },
     ano: {
       type: Number,
-      required: true
+      required: true,
     },
     periodo: {
       type: String,
-      required: true
+      required: true,
     },
     sala: {
       type: String,
-      required: true
+      required: true,
     },
     escola: {
       type: Schema.Types.ObjectId,
-      ref: "School",
-      required: true
-    }
+      ref: 'School',
+      required: true,
+    },
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model('User', UserSchema);

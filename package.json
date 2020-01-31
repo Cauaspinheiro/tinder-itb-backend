@@ -6,7 +6,19 @@
   "author": "Cauaspinheiro <56241309+Cauaspinheiro@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "commit": "git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -14,7 +26,22 @@
     "mongoose": "^5.8.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import-helpers": "^1.0.2",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
     "nodemon": "^2.0.2",
     "sucrase": "^3.12.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

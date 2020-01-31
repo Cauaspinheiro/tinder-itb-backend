@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const SchoolSchema = new mongoose.Schema(
   {
     nome: {
       type: String,
-      required: true
+      required: true,
     },
     cursos: {
       type: [String],
-      required: true
-    }
+      required: true,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.model("School", SchoolSchema);
+export default mongoose.model('School', SchoolSchema);

@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from '../models/User';
 
 export default {
   async index(req, res) {
@@ -18,19 +18,23 @@ export default {
   },
 
   async update(req, res) {
-    const user = await User.findOneAndUpdate({ _id: req.user._id }, req.body, {
-      new: true
+    const { _id } = req.user;
+
+    const user = await User.findOneAndUpdate({ _id }, req.body, {
+      new: true,
     });
 
-    return await res.json({
-      "Old User": req.user.toJSON(),
-      "New User": user.toJSON()
+    return res.json({
+      'Old User': req.user.toJSON(),
+      'New User': user.toJSON(),
     });
   },
 
   async destroy(req, res) {
-    await User.findOneAndRemove({ _id: req.user._id });
+    const { _id } = req.user;
+
+    await User.findOneAndRemove({ _id });
 
     return res.json(req.user);
-  }
+  },
 };
