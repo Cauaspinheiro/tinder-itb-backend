@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import UserController from './controllers/UserController';
+
 import SchoolController from './controllers/SchoolController';
+import UserController from './controllers/UserController';
+
 import checkUserExists from './middlewares/checkUserExists';
 import checkUserNotExists from './middlewares/checkUserNotExists';
 
