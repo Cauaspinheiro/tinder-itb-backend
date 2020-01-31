@@ -1,4 +1,4 @@
-import School from "../models/School";
+import School from '../models/School';
 
 export default {
   async index(req, res) {
@@ -8,11 +8,11 @@ export default {
   },
 
   async show(req, res) {
-    const _id = req.params.id;
+    const { id: _id } = req.params;
 
     const school = await School.findOne({ _id });
 
-    if (!school) return res.json("School not found");
+    if (!school) return res.json('School not found');
 
     return res.json(school);
   },
@@ -22,7 +22,7 @@ export default {
 
     let school = await School.findOne({ nome });
 
-    if (school) return res.json("Escola já existe");
+    if (school) return res.json('Escola já existe');
 
     school = await School.create(req.body);
 
@@ -30,11 +30,11 @@ export default {
   },
 
   async update(req, res) {
-    const _id = req.params.id;
+    const { id: _id } = req.params;
 
     let school = await School.findOne({ _id });
 
-    if (!school) return res.json("School not found");
+    if (!school) return res.json('School not found');
 
     school = await School.findOneAndUpdate({ _id }, req.body, { new: true });
 
@@ -42,14 +42,14 @@ export default {
   },
 
   async destroy(req, res) {
-    const _id = req.params.id;
+    const { id: _id } = req.params;
 
     let school = await School.findOne({ _id });
 
-    if (!school) return res.json("School not found");
+    if (!school) return res.json('School not found');
 
     school = await School.findOneAndDelete({ _id });
 
     return res.json(school);
-  }
+  },
 };
