@@ -1,4 +1,4 @@
-import School from '../models/School';
+import School from '../../models/School';
 
 async function checkSchool(req, res, next) {
   const { escola } = req.body;

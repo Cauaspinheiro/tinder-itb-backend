@@ -1,4 +1,4 @@
-import User from '../models/User';
+import User from '../../models/User';
 
 async function checkUserNotExists(req, res, next) {
   const { email_itb } = req.body;
