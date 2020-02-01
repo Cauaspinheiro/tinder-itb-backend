@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+import PrefsSchema from './util/PrefsSchema';
+
 const UserSchema = new mongoose.Schema(
   {
     nome: {
@@ -58,6 +60,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    prefs: PrefsSchema,
   },
   {
     timestamps: true,
