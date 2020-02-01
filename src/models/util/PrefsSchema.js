@@ -7,6 +7,7 @@ const PrefsSchema = new mongoose.Schema(
     series: [Number],
     cursos: [String],
   },
+  { _id: false },
 );
 
 export default PrefsSchema;
