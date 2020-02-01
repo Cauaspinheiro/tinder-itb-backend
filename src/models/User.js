@@ -56,6 +56,7 @@ const UserSchema = new mongoose.Schema(
     },
     curso: {
       type: String,
+      required: true,
     },
   },
   {
