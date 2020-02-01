@@ -2,7 +2,7 @@ import User from '../models/User';
 
 export default {
   async show(req, res) {
-    const { prefs } = req.user;
+    const { prefs } = req;
 
     if (!prefs) return res.json('Prefs não encontradas');
 
@@ -24,9 +24,8 @@ export default {
   },
 
   async update(req, res) {
-    const { _id, prefs } = req.user;
-
-    if (!prefs) return res.json('Prefs não encontradas');
+    const { _id } = req.user;
+    const { prefs } = req;
 
     const user = await User.findOneAndUpdate(
       { _id },
@@ -38,7 +37,8 @@ export default {
   },
 
   async destroy(req, res) {
-    const { _id, prefs } = req.user;
+    const { _id } = req.user;
+    const { prefs } = req;
 
     if (!prefs) return res.json('Prefs não encontradas');
 
