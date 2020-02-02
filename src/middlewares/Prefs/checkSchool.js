@@ -1,9 +1,11 @@
 import School from '../../models/School';
 
 async function checkSchool(req, res, next) {
-  const { escola } = req.prefs;
+  const { escola } = req.body;
+
 
   if (!escola) return next();
+
 
   const school = await School.findOne({ nome: escola });
 
