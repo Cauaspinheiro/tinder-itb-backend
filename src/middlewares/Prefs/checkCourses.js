@@ -1,10 +1,14 @@
 import School from '../../models/School';
 
 async function checkCourses(req, res, next) {
-  const { cursos } = req.body;
+  let { cursos } = req.body;
   let { school } = req;
 
   if (!cursos) return next();
+
+  cursos = cursos.map((curso) => curso.toUpperCase());
+
+  req.body.cursos = cursos;
 
   if (!school) {
     for await (const curso of cursos) {  // eslint-disable-line
