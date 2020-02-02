@@ -3,11 +3,10 @@ import mongoose from 'mongoose';
 const PrefsSchema = new mongoose.Schema(
   {
     escola: String,
-    genero: String,
-    series: [Number],
+    generos: [String],
+    anos: [Number],
     cursos: [String],
-  },
-  { _id: false },
+  }, { _id: false },
 );
 
 export default PrefsSchema;
