@@ -1,11 +1,13 @@
 import User from '../../models/User';
 
 async function checkNotExists(req, res, next) {
-  const { email_itb } = req.body;
+  const { email } = req.body;
 
-  const user = await User.findOne({ email_itb });
+  const user = await User.findOne({ email });
 
   if (user) return res.json('Usuário já existe');
+
+  req.user = req.body;
 
   return next();
 }

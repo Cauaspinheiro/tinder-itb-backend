@@ -24,10 +24,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    email_itb: {
-      type: String,
-      required: true,
-    },
     detalhes: {
       type: Map,
       required: true,
