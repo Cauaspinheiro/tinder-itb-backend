@@ -1,6 +1,6 @@
 import User from '../../models/User';
 
-async function checkUserNotExists(req, res, next) {
+async function checkNotExists(req, res, next) {
   const { email_itb } = req.body;
 
   const user = await User.findOne({ email_itb });
@@ -10,4 +10,4 @@ async function checkUserNotExists(req, res, next) {
   return next();
 }
 
-export default checkUserNotExists;
+export default checkNotExists;

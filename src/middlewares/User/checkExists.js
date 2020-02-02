@@ -1,6 +1,6 @@
 import User from '../../models/User';
 
-async function checkUserExists(req, res, next) {
+async function checkExists(req, res, next) {
   const { id: _id } = req.params;
 
   const user = await User.findOne({ _id });
@@ -12,4 +12,4 @@ async function checkUserExists(req, res, next) {
   return next();
 }
 
-export default checkUserExists;
+export default checkExists;

@@ -1,4 +1,4 @@
-async function checkPrefsNotExists(req, res, next) {
+async function checkNotExists(req, res, next) {
   const { prefs } = req.user;
 
   if (prefs) return res.json('Prefs já existem');
@@ -8,4 +8,4 @@ async function checkPrefsNotExists(req, res, next) {
   return next();
 }
 
-export default checkPrefsNotExists;
+export default checkNotExists;
