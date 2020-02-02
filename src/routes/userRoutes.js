@@ -7,6 +7,7 @@ function loadUserRoutes(routes) {
 
   routes.post('/users',
     user.checkNotExists,
+    user.checkInfo,
     user.checkSchool,
     user.checkCourse,
     UserController.store);
@@ -18,6 +19,7 @@ function loadUserRoutes(routes) {
 
   routes.put('/users/:id',
     user.checkExists,
+    user.checkInfo,
     user.checkSchool,
     user.checkCourse,
     UserController.update);
