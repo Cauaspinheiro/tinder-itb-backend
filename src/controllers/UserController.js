@@ -2,7 +2,23 @@ import User from '../models/User';
 
 export default {
   async index(req, res) {
-    const users = await User.find();
+    const { prefs } = req;
+    const { _id } = req.user;
+    let users;
+
+
+    if (!prefs) {
+      users = await User.find();
+      return res.json(users);
+    }
+
+    users = await User.find({
+      _id: { $nin: _id },
+      escola: prefs.escola,
+      genero: { $in: prefs.generos },
+      ano: { $in: prefs.anos },
+      curso: { $in: prefs.cursos },
+    });
 
     return res.json(users);
   },

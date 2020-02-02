@@ -3,7 +3,7 @@ import UserController from '../controllers/UserController';
 import user from '../middlewares/User';
 
 function loadUserRoutes(routes) {
-  routes.get('/users', UserController.index);
+  routes.get('/users', user.checkPrefs, UserController.index);
 
   routes.post('/users',
     user.checkNotExists,
