@@ -8,17 +8,12 @@ export default {
 
 
     if (!prefs) {
-      users = await User.find();
+      users = await User.find({ _id: { $nin: _id } });
       return res.json(users);
     }
 
-    users = await User.find({
-      _id: { $nin: _id },
-      escola: prefs.escola,
-      genero: { $in: prefs.generos },
-      ano: { $in: prefs.anos },
-      curso: { $in: prefs.cursos },
-    });
+
+    users = await User.find(prefs); //eslint-disable-line
 
     return res.json(users);
   },
