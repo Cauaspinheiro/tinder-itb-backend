@@ -1,5 +1,5 @@
-import School from '../models/School';
-import User from '../models/User';
+import School from '../../models/School';
+import User from '../../models/User';
 
 async function checkCourse(req, res, next) {
   const { curso, id } = req.body;

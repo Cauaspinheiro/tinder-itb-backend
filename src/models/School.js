@@ -6,6 +6,10 @@ const SchoolSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    local: {
+      type: String,
+      required: true,
+    },
     cursos: {
       type: [String],
       required: true,
