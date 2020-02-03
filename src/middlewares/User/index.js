@@ -4,7 +4,7 @@ import checkInfo from './checkInfo';
 import checkNotExists from './checkNotExists';
 import checkPrefs from './checkPrefs';
 import checkSchool from './checkSchool';
-
+import search from './search';
 
 export default {
   checkCourse,
@@ -13,4 +13,5 @@ export default {
   checkSchool,
   checkPrefs,
   checkInfo,
+  search,
 };

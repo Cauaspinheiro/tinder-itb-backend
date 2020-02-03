@@ -1,9 +1,18 @@
 import User from '../../models/User';
 
 async function checkExists(req, res, next) {
-  const { id: _id } = req.params;
+  let { id: _id } = req.params;
 
-  const user = await User.findOne({ _id });
+  let user = await User.findOne({ _id });
+
+  if (user) {
+    req.user = user;
+    return next();
+  }
+
+  _id = req.headers.id;
+
+  user = await User.findOne({ _id });
 
   if (!user) return res.json('User not found');
 
