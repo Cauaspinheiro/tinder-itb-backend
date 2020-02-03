@@ -10,5 +10,7 @@ export default (req, res, next) => {
     { _id: { $nin: user.deslikes } },
   ];
 
+  req.prefs.show_me = true;
+
   return next();
 };
