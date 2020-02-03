@@ -1,25 +1,24 @@
 import DeslikeController from '../controllers/DeslikeController';
 
-import deslikes from '../middlewares/Deslikes';
+import headerUser from '../middlewares/Global/headerUser';
+import paramUser from '../middlewares/Global/paramUser';
 
-function loadDeslikesRoutes(routes) {
+export default (routes) => {
   routes.get('/users/:id/deslikes',
-    deslikes.checkParamUser,
+    paramUser,
     DeslikeController.index);
 
   routes.post('/users/:id/deslikes',
-    deslikes.checkParamUser,
-    deslikes.checkHeaderUser,
+    paramUser,
+    headerUser,
     DeslikeController.store);
 
   routes.put('/users/:id/deslikes',
-    deslikes.checkParamUser,
-    deslikes.checkHeaderUser,
+    paramUser,
+    headerUser,
     DeslikeController.update);
 
   routes.delete('/users/:id/deslikes',
-    deslikes.checkParamUser,
+    paramUser,
     DeslikeController.destroy);
-}
-
-export default loadDeslikesRoutes;
+};

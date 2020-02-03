@@ -1,34 +1,34 @@
 import PrefsController from '../controllers/PrefsController';
 
-import prefs from '../middlewares/Prefs';
-import user from '../middlewares/User';
+import getSchool from '../middlewares/Global/school';
+import getUser from '../middlewares/Global/user';
+import getCourses from '../middlewares/Prefs/courses';
+import notPrefs from '../middlewares/Prefs/notPrefs';
+import getPrefs from '../middlewares/Prefs/prefs';
 
-function loadPrefsRoutes(routes) {
+export default (routes) => {
   routes.post('/users/:id/prefs',
-    user.checkExists,
-    prefs.checkNotExists,
-    prefs.checkSchool,
-    prefs.checkCourses,
+    getUser,
+    notPrefs,
+    getSchool,
+    getCourses,
     PrefsController.store);
 
 
   routes.get('/users/:id/prefs',
-    user.checkExists,
-    prefs.checkExists,
+    getUser,
+    getPrefs,
     PrefsController.show);
 
   routes.delete('/users/:id/prefs',
-    user.checkExists,
-    prefs.checkExists,
+    getUser,
+    getPrefs,
     PrefsController.destroy);
 
   routes.put('/users/:id/prefs',
-    user.checkExists,
-    prefs.checkExists,
-    prefs.checkSchool,
-    prefs.checkCourses,
+    getUser,
+    getPrefs,
+    getSchool,
+    getCourses,
     PrefsController.update);
-}
-
-
-export default loadPrefsRoutes;
+};

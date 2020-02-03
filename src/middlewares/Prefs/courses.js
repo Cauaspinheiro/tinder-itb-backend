@@ -1,6 +1,6 @@
 import School from '../../models/School';
 
-async function checkCourses(req, res, next) {
+export default async (req, res, next) => {
   let { cursos } = req.body;
   let { school } = req;
 
@@ -20,7 +20,6 @@ async function checkCourses(req, res, next) {
       }
     }
 
-
     return next();
   }
 
@@ -30,6 +29,4 @@ async function checkCourses(req, res, next) {
   if (!school) return res.json('Curso não encontrado nessa escola');
 
   return next();
-}
-
-export default checkCourses;
+};

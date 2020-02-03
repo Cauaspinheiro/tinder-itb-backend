@@ -1,25 +1,24 @@
 import LikeController from '../controllers/LikeController';
 
-import likes from '../middlewares/Likes';
+import headerUser from '../middlewares/Global/headerUser';
+import paramUser from '../middlewares/Global/paramUser';
 
-function loadLikesRoutes(routes) {
+export default (routes) => {
   routes.get('/users/:id/likes',
-    likes.checkParamUser,
+    paramUser,
     LikeController.index);
 
   routes.post('/users/:id/likes',
-    likes.checkParamUser,
-    likes.checkHeaderUser,
+    paramUser,
+    headerUser,
     LikeController.store);
 
   routes.put('/users/:id/likes',
-    likes.checkParamUser,
-    likes.checkHeaderUser,
+    paramUser,
+    headerUser,
     LikeController.update);
 
   routes.delete('/users/:id/likes',
-    likes.checkParamUser,
+    paramUser,
     LikeController.destroy);
-}
-
-export default loadLikesRoutes;
+};

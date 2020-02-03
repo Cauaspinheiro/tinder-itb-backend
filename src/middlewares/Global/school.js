@@ -1,6 +1,6 @@
 import School from '../../models/School';
 
-async function checkSchool(req, res, next) {
+export default async (req, res, next) => {
   const { escola } = req.body;
 
   if (!escola) return next();
@@ -9,7 +9,7 @@ async function checkSchool(req, res, next) {
 
   if (!school) return res.json('Escola não encontrada');
 
-  return next();
-}
+  req.school = school;
 
-export default checkSchool;
+  return next();
+};

@@ -1,19 +1,18 @@
 import { Router } from 'express';
 
-import loadDeslikesRoutes from './deslikesRoutes';
-import loadLikesRoutes from './likesRoutes';
-import loadPrefsRoutes from './prefsRoutes';
-import loadSchoolRoutes from './schoolRoutes';
-import loadUserRoutes from './userRoutes';
+import deslikesRoutes from './deslikesRoutes';
+import likesRoutes from './likesRoutes';
+import prefsRoutes from './prefsRoutes';
+import schoolRoutes from './schoolRoutes';
+import userRoutes from './userRoutes';
 
 
 const routes = Router();
 
-
-loadPrefsRoutes(routes);
-loadSchoolRoutes(routes);
-loadUserRoutes(routes);
-loadLikesRoutes(routes);
-loadDeslikesRoutes(routes);
+deslikesRoutes(routes);
+likesRoutes(routes);
+prefsRoutes(routes);
+schoolRoutes(routes);
+userRoutes(routes);
 
 export default routes;

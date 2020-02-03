@@ -1,7 +1,7 @@
 import School from '../../models/School';
 import User from '../../models/User';
 
-async function checkCourse(req, res, next) {
+export default async (req, res, next) => {
   const { curso, id } = req.body;
   let { escola } = req.body;
 
@@ -20,6 +20,4 @@ async function checkCourse(req, res, next) {
   if (!school) return res.json('Curso não foi encontrado');
 
   return next();
-}
-
-export default checkCourse;
+};

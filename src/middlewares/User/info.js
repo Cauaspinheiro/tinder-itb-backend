@@ -1,4 +1,4 @@
-async function checkInfo(req, res, next) {
+export default (req, res, next) => {
   const { contatos } = req.user;
 
   if (!contatos) return res.json('Contatos não encontrados');
@@ -10,6 +10,4 @@ async function checkInfo(req, res, next) {
   }
 
   return next();
-}
-
-export default checkInfo;
+};

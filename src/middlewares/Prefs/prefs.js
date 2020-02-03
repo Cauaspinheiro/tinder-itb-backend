@@ -1,4 +1,4 @@
-async function checkExists(req, res, next) {
+export default (req, res, next) => {
   const { prefs } = req.user;
 
   if (!prefs) return res.json('Prefs não encontradas');
@@ -6,6 +6,4 @@ async function checkExists(req, res, next) {
   req.prefs = prefs;
 
   return next();
-}
-
-export default checkExists;
+};

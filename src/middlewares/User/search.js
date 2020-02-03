@@ -1,5 +1,5 @@
-async function search(req, res, next) {
-  const { user } = req;
+export default (req, res, next) => {
+  const { headerUser: user } = req;
   const { _id: id } = user;
 
   req.prefs = {};
@@ -11,6 +11,4 @@ async function search(req, res, next) {
   ];
 
   return next();
-}
-
-export default search;
+};
