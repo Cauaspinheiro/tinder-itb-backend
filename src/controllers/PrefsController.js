@@ -10,13 +10,11 @@ export default {
   },
 
   async store(req, res) {
-    const { _id, prefs } = req.user;
-
-    if (prefs) return res.json('Prefs já existem');
+    const { _id } = req.user;
 
     const user = await User.findOneAndUpdate(
       { _id },
-      { prefs: req.body },
+      { prefs: req.prefs },
       { new: true },
     );
 
