@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 import PrefsSchema from './util/PrefsSchema';
 
@@ -57,6 +57,18 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     prefs: PrefsSchema,
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    deslikes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     timestamps: true,

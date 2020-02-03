@@ -1,15 +1,13 @@
 import User from '../../models/User';
 
-async function checkExists(req, res, next) {
+export default async (req, res, next) => {
   const { id: _id } = req.params;
 
   const user = await User.findOne({ _id });
 
-  if (!user) return res.json('User not found');
+  if (!user) return res.json('Param User not found');
 
   req.user = user;
 
   return next();
-}
-
-export default checkExists;
+};

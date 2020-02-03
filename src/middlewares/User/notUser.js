@@ -1,6 +1,6 @@
 import User from '../../models/User';
 
-async function checkNotExists(req, res, next) {
+export default async (req, res, next) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
@@ -10,6 +10,4 @@ async function checkNotExists(req, res, next) {
   req.user = req.body;
 
   return next();
-}
-
-export default checkNotExists;
+};
