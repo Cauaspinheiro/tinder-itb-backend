@@ -11,5 +11,7 @@ export default (req, res, next) => {
     { _id: { $nin: user.matchs } },
   ];
 
+  req.prefs.show_me = true;
+
   return next();
 };

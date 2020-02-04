@@ -69,6 +69,13 @@ const UserSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
+     matchs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    novoMatchs: Number,
     password_hash: {
       type: String,
       required: true,
