@@ -4,7 +4,7 @@ export default {
   async index(req, res) {
     const { prefs } = req;
 
-    const users = await User.find(prefs); //eslint-disable-line
+    const users = await User.find(prefs);
 
     return res.json(users);
   },
