@@ -69,17 +69,23 @@ const UserSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    matchs: [
+     matchs: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
       },
     ],
     novoMatchs: Number,
+    password_hash: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
   },
 );
+
+UserSchema.virtual('password').get(() => 'Hello Password');
 
 export default mongoose.model('User', UserSchema);
