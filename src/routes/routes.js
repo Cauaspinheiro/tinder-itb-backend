@@ -5,6 +5,7 @@ import likesRoutes from './likesRoutes';
 import matchsRoutes from './matchRoutes';
 import prefsRoutes from './prefsRoutes';
 import schoolRoutes from './schoolRoutes';
+import sessionRoutes from './sessionRoutes';
 import userRoutes from './userRoutes';
 
 
@@ -16,5 +17,7 @@ prefsRoutes(routes);
 schoolRoutes(routes);
 userRoutes(routes);
 matchsRoutes(routes);
+sessionRoutes(routes);
+
 
 export default routes;

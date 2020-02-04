@@ -1,5 +1,5 @@
 export default (req, res, next) => {
-  const { headerUser: user } = req;
+  const { user } = req;
   const { _id: id } = user;
 
   req.prefs = {};
