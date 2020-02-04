@@ -69,10 +69,16 @@ const UserSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
+    password_hash: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
   },
 );
+
+UserSchema.virtual('password').get(() => 'Hello Password');
 
 export default mongoose.model('User', UserSchema);

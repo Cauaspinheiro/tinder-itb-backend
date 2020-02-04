@@ -6,6 +6,7 @@ import getUser from '../middlewares/Global/user';
 import getCourse from '../middlewares/User/course';
 import checkInfo from '../middlewares/User/info';
 import notUser from '../middlewares/User/notUser';
+import passwordHash from '../middlewares/User/password';
 import getPrefs from '../middlewares/User/prefs';
 import searchParams from '../middlewares/User/search';
 
@@ -24,6 +25,7 @@ export default (routes) => {
   routes.post('/users',
     notUser,
     checkInfo,
+    passwordHash,
     getSchool,
     getCourse,
     UserController.store);
@@ -35,7 +37,7 @@ export default (routes) => {
 
   routes.put('/users/:id',
     getUser,
-    checkInfo,
+    passwordHash,
     getSchool,
     getCourse,
     UserController.update);

@@ -1,5 +1,5 @@
 export default (req, res, next) => {
-  const { contatos } = req.user;
+  const { contatos, password } = req.user;
 
   if (!contatos) return res.json('Contatos não encontrados');
 
@@ -8,6 +8,8 @@ export default (req, res, next) => {
   if (numero) {
     if (numero.length !== 13) return res.json('Número inválido');
   }
+
+  if (!password) return res.json('Não há senha');
 
   return next();
 };
