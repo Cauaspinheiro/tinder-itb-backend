@@ -8,6 +8,7 @@ export default (req, res, next) => {
     { _id: { $ne: id } },
     { _id: { $nin: user.likes } },
     { _id: { $nin: user.deslikes } },
+    { _id: { $nin: user.matchs } },
   ];
 
   req.prefs.show_me = true;
