@@ -14,7 +14,7 @@ export default {
 
     const user = await User.findOneAndUpdate(
       { _id },
-      { prefs: req.prefs },
+      { prefs: req.body },
       { new: true },
     );
 
