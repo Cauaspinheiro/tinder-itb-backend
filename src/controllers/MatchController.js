@@ -1,6 +1,6 @@
 export default {
   async index(req, res) {
-    const { paramUser: user } = req;
+    const { user } = req;
 
     const { newMatchs, matchs } = user;
 
@@ -13,7 +13,7 @@ export default {
 
 
   async update(req, res) {
-    const { paramUser: targetUser, headerUser: user } = req;
+    const { targetUser, user } = req;
 
     for (let i = 0; i < user.matchs.length; i += 1) {
       if (user.matchs[i] == targetUser.id) { //eslint-disable-line

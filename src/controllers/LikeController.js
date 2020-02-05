@@ -2,13 +2,13 @@ import User from '../models/User';
 
 export default {
   async index(req, res) {
-    const { paramUser: user } = req;
+    const { user } = req;
 
     return res.json(user.likes);
   },
 
   async store(req, res) {
-    const { paramUser: targetUser, headerUser: user } = req;
+    const { targetUser, user } = req;
 
     user.likes.push(targetUser.id);
 
@@ -18,7 +18,7 @@ export default {
   },
 
   async update(req, res) {
-    const { paramUser: targetUser, headerUser: user } = req;
+    const { targetUser, user } = req;
 
     for (let i = 0; i < user.likes.length; i += 1) {
       if (user.likes[i] == targetUser.id) { //eslint-disable-line
@@ -32,7 +32,7 @@ export default {
   },
 
   async destroy(req, res) {
-    const { _id, likes } = req.paramUser;
+    const { _id, likes } = req.user;
 
     const user = await User.findOneAndUpdate({ _id }, {
       $unset: {
