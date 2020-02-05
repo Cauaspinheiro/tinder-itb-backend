@@ -1,5 +1,5 @@
 export default async (req, res, next) => {
-  const { paramUser: targetUser, headerUser: user } = req;
+  const { targetUser, user } = req;
 
   if (!targetUser.likes.includes(user.id)) return next();
 
