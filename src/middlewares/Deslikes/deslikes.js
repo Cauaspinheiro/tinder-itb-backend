@@ -1,6 +1,6 @@
 export default (req, res, next) => {
-  const { deslikes } = req.headerUser;
-  const { _id: id } = req.paramUser;
+  const { deslikes } = req.user;
+  const { _id: id } = req.targetUser;
 
   if (!deslikes.includes(id)) return res.json('Usuário não encontrado em deslikes');
 
