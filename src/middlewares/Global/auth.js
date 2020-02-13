@@ -4,7 +4,7 @@ import { promisify } from 'util';
 export default async (req, res, next) => {
   const { authorization: auth } = req.headers;
 
-  if (!auth) return res.json('Token não foi achado');
+  if (!auth) return res.status(401).json('Token não foi achado');
 
   const token = auth.split(' ')[1];
 
@@ -16,6 +16,6 @@ export default async (req, res, next) => {
 
     return next();
   } catch (err) {
-    return res.json(err);
+    return res.status(401).json(err);
   }
 };

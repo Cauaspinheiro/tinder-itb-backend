@@ -4,9 +4,7 @@ export default {
   async show(req, res) {
     const { prefs } = req;
 
-    if (!prefs) return res.json('Prefs não encontradas');
-
-    return res.json(prefs);
+    return res.status(200).json(prefs);
   },
 
   async store(req, res) {
@@ -18,7 +16,7 @@ export default {
       { new: true },
     );
 
-    return res.json({ prefs: user.prefs });
+    return res.status(201).json({ prefs: user.prefs });
   },
 
   async update(req, res) {
@@ -31,14 +29,12 @@ export default {
       { new: true },
     );
 
-    return res.json({ 'Old Prefs': prefs, 'New Prefs': user.prefs });
+    return res.status(200).json({ 'Old Prefs': prefs, 'New Prefs': user.prefs });
   },
 
   async destroy(req, res) {
     const { _id } = req.user;
     const { prefs } = req;
-
-    if (!prefs) return res.json('Prefs não encontradas');
 
     const user = await User.findOneAndUpdate({ _id }, {
       $unset: {
@@ -46,6 +42,6 @@ export default {
       },
     }, { new: true });
 
-    return res.json(user);
+    return res.status(200).json(user);
   },
 };

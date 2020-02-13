@@ -23,5 +23,5 @@ export default async (req, res, next) => {
   await targetUser.save();
   await user.save();
 
-  return res.json({ 'NEW MATCH': targetUser.id, newMatchs: user.newMatchs });
+  return res.status(200).json({ 'NEW MATCH': targetUser.id, newMatchs: user.newMatchs });
 };

@@ -1,7 +1,7 @@
 export default (req, res, next) => {
   const { prefs } = req.user;
 
-  if (!prefs) return res.json('Prefs não encontradas');
+  if (!prefs) return res.status(404).json('Prefs não encontradas');
 
   req.prefs = prefs;
 

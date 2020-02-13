@@ -6,17 +6,17 @@ export default {
 
     const users = await User.find(prefs);
 
-    return res.json(users);
+    return res.status(200).json(users);
   },
 
   async show(req, res) {
-    return res.json(req.user);
+    return res.status(200).json(req.user);
   },
 
   async store(req, res) {
     const user = await User.create(req.body);
 
-    return res.json(user);
+    return res.status(201).json(user);
   },
 
   async update(req, res) {
@@ -26,7 +26,7 @@ export default {
       new: true,
     });
 
-    return res.json({
+    return res.status(200).json({
       'Old User': req.user.toJSON(),
       'New User': user.toJSON(),
     });
@@ -37,6 +37,6 @@ export default {
 
     await User.findOneAndRemove({ _id });
 
-    return res.json(req.user);
+    return res.status(200).json(req.user);
   },
 };
