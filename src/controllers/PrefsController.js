@@ -6,7 +6,7 @@ export default {
 
     if (!prefs) return res.json('Prefs não encontradas');
 
-    return res.json(prefs);
+    return res.status(200).json(prefs);
   },
 
   async store(req, res) {
@@ -18,7 +18,7 @@ export default {
       { new: true },
     );
 
-    return res.json({ prefs: user.prefs });
+    return res.status(201).json({ prefs: user.prefs });
   },
 
   async update(req, res) {
@@ -31,7 +31,7 @@ export default {
       { new: true },
     );
 
-    return res.json({ 'Old Prefs': prefs, 'New Prefs': user.prefs });
+    return res.status(200).json({ 'Old Prefs': prefs, 'New Prefs': user.prefs });
   },
 
   async destroy(req, res) {
@@ -46,6 +46,6 @@ export default {
       },
     }, { new: true });
 
-    return res.json(user);
+    return res.status(200).json(user);
   },
 };

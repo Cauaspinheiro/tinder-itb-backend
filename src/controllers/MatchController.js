@@ -8,7 +8,7 @@ export default {
 
     await user.save();
 
-    return res.json({ matchs, newMatchs });
+    return res.status(200).json({ matchs, newMatchs });
   },
 
 
@@ -32,6 +32,6 @@ export default {
     await user.save();
     await targetUser.save();
 
-    return res.json(user.matchs);
+    return res.status(200).json(user.matchs);
   },
 };

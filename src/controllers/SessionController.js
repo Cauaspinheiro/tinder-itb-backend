@@ -5,7 +5,7 @@ export default {
     const { user } = req;
     const { id } = user;
 
-    return res.json({
+    return res.status(201).json({
       user,
       jwt: jwt.sign(
         { id },
