@@ -12,9 +12,9 @@ export default {
 
     const school = await School.findOne({ _id });
 
-    if (!school) return res.json('School not found');
+    if (!school) return res.status(404).json('School not found');
 
-    return res.status(201).json(school);
+    return res.status(200).json(school);
   },
 
   async store(req, res) {
@@ -22,11 +22,11 @@ export default {
 
     let school = await School.findOne({ nome });
 
-    if (school) return res.json('Escola já existe');
+    if (school) return res.status(400).json('Escola já existe');
 
     school = await School.create(req.body);
 
-    return res.status(200).json(school);
+    return res.status(201).json(school);
   },
 
   async update(req, res) {
@@ -34,7 +34,7 @@ export default {
 
     let school = await School.findOne({ _id });
 
-    if (!school) return res.json('School not found');
+    if (!school) return res.status(404).json('School not found');
 
     school = await School.findOneAndUpdate({ _id }, req.body, { new: true });
 
@@ -46,7 +46,7 @@ export default {
 
     let school = await School.findOne({ _id });
 
-    if (!school) return res.json('School not found');
+    if (!school) return res.status(404).json('School not found');
 
     school = await School.findOneAndDelete({ _id });
 
