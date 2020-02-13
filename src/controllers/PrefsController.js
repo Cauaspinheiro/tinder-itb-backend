@@ -4,8 +4,6 @@ export default {
   async show(req, res) {
     const { prefs } = req;
 
-    if (!prefs) return res.json('Prefs não encontradas');
-
     return res.status(200).json(prefs);
   },
 
@@ -37,8 +35,6 @@ export default {
   async destroy(req, res) {
     const { _id } = req.user;
     const { prefs } = req;
-
-    if (!prefs) return res.json('Prefs não encontradas');
 
     const user = await User.findOneAndUpdate({ _id }, {
       $unset: {
