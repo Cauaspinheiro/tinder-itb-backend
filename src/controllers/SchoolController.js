@@ -14,7 +14,7 @@ export default {
 
     if (!school) return res.json('School not found');
 
-    return res.status(201).json(school);
+    return res.status(200).json(school);
   },
 
   async store(req, res) {
@@ -26,7 +26,7 @@ export default {
 
     school = await School.create(req.body);
 
-    return res.status(200).json(school);
+    return res.status(201).json(school);
   },
 
   async update(req, res) {
