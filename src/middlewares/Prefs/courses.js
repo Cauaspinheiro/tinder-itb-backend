@@ -16,7 +16,7 @@ export default async (req, res, next) => {
 
 
       if (school.length === 0) {
-        return res.json('Curso não encontrado');
+        return res.status(404).json('Curso não encontrado');
       }
     }
 
@@ -26,7 +26,7 @@ export default async (req, res, next) => {
   school = await School.findOne({ _id: school.id, cursos: { $all: cursos } });
 
 
-  if (!school) return res.json('Curso não encontrado nessa escola');
+  if (!school) return res.status(404).json('Curso não encontrado nessa escola');
 
   return next();
 };

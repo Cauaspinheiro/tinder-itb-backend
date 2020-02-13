@@ -6,7 +6,7 @@ export default (req, res, next) => {
   const { numero } = contatos;
 
   if (numero) {
-    if (numero.length !== 13) return res.json('Número inválido');
+    if (numero.length !== 13) return res.status(400).json('Número inválido');
   }
 
   return next();

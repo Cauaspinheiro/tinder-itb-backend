@@ -5,7 +5,7 @@ export default async (req, res, next) => {
 
   const user = await User.findOne({ _id });
 
-  if (!user) return res.json('Header User not found');
+  if (!user) return res.status(404).json('Header User not found');
 
   req.targetUser = user;
 
