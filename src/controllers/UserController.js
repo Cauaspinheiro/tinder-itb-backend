@@ -4,7 +4,17 @@ export default {
   async index(req, res) {
     const { prefs } = req;
 
-    const users = await User.find(prefs);
+    const users = await User.find(prefs, {
+      _id: 0,
+      nome: 1,
+      genero: 1,
+      data_nascimento: 1,
+      bio: 1,
+      ano: 1,
+      curso: 1,
+      periodo: 1,
+      escola: 1,
+    });
 
     return res.status(200).json(users);
   },
