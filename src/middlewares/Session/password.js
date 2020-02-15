@@ -6,7 +6,7 @@ export default async (req, res, next) => {
 
 
   if (!(await bcrypt.compare(password, password_hash))) {
-    return res.status(400).json('Senha incorreta');
+    return res.status(400).json({ error: 'INVALID PASSWORD' });
   }
 
   return next();

@@ -3,7 +3,7 @@ export default (req, res, next) => {
   const { _id: id } = req.targetUser;
 
   if (deslikes.includes(id) || likes.includes(id) || matchs.includes(id)) {
-    return res.status(400).json('User já está em uma lista');
+    return res.status(400).json({ error: 'USER IS ALREADY IN A LIST' });
   }
 
   return next();

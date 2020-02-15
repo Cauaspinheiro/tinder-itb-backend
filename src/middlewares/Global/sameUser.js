@@ -4,5 +4,5 @@ export default (req, res, next) => {
 
   if (authId === paramId) return next();
 
-  return res.status(401).json('Não autorizado');
+  return res.status(401).json({ error: 'NOT AUTHORIZED' });
 };

@@ -10,38 +10,37 @@ export default {
   async store(req, res) {
     const { _id } = req.user;
 
-    const user = await User.findOneAndUpdate(
+    const { prefs } = await User.findOneAndUpdate(
       { _id },
       { prefs: req.body },
       { new: true },
     );
 
-    return res.status(201).json({ prefs: user.prefs });
+    return res.status(201).json({ prefs });
   },
 
   async update(req, res) {
     const { _id } = req.user;
-    const { prefs } = req;
 
-    const user = await User.findOneAndUpdate(
+    const { prefs } = await User.findOneAndUpdate(
       { _id },
       { prefs: req.body },
       { new: true },
     );
 
-    return res.status(200).json({ 'Old Prefs': prefs, 'New Prefs': user.prefs });
+    return res.status(200).json({ prefs });
   },
 
   async destroy(req, res) {
     const { _id } = req.user;
     const { prefs } = req;
 
-    const user = await User.findOneAndUpdate({ _id }, {
+    await User.findOneAndUpdate({ _id }, {
       $unset: {
         prefs,
       },
     }, { new: true });
 
-    return res.status(200).json(user);
+    return res.status(204).json();
   },
 };

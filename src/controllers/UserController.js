@@ -4,31 +4,100 @@ export default {
   async index(req, res) {
     const { prefs } = req;
 
-    const users = await User.find(prefs);
+    const users = await User.find(prefs, {
+      _id: 0,
+      nome: 1,
+      genero: 1,
+      data_nascimento: 1,
+      bio: 1,
+      ano: 1,
+      curso: 1,
+      periodo: 1,
+      escola: 1,
+    });
 
     return res.status(200).json(users);
   },
 
   async show(req, res) {
-    return res.status(200).json(req.user);
+    const {
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    } = req.user;
+
+    return res.status(200).json({
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    });
   },
 
   async store(req, res) {
-    const user = await User.create(req.body);
+    const { _id } = await User.create(req.body);
 
-    return res.status(201).json(user);
+    return res.status(201).json(_id);
   },
 
   async update(req, res) {
     const { _id } = req.user;
 
-    const user = await User.findOneAndUpdate({ _id }, req.body, {
+    const {
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    } = await User.findOneAndUpdate({ _id }, req.body, {
       new: true,
     });
 
     return res.status(200).json({
-      'Old User': req.user.toJSON(),
-      'New User': user.toJSON(),
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
     });
   },
 
@@ -37,6 +106,6 @@ export default {
 
     await User.findOneAndRemove({ _id });
 
-    return res.status(200).json(req.user);
+    return res.status(204).json();
   },
 };
