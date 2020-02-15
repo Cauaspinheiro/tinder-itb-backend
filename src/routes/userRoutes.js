@@ -30,7 +30,7 @@ export default (routes) => {
     UserController.store);
 
 
-  routes.get('/users/:id', auth,
+  routes.get('/users/:id', auth, sameUser,
     getUser,
     UserController.show);
 
