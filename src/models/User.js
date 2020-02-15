@@ -85,6 +85,6 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-UserSchema.virtual('password').get(() => 'Hello Password');
+UserSchema.virtual('password');
 
 export default mongoose.model('User', UserSchema);
