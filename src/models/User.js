@@ -26,7 +26,6 @@ const UserSchema = new mongoose.Schema(
     },
     detalhes: {
       type: Map,
-      required: true,
     },
     contatos: {
       type: Map,
@@ -86,6 +85,6 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-UserSchema.virtual('password').get(() => 'Hello Password');
+UserSchema.virtual('password');
 
 export default mongoose.model('User', UserSchema);
