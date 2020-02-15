@@ -13,5 +13,7 @@ export default (req, res, next) => {
 
   if (password.length < 6) return res.status(400).json({ error: 'INVALID PASSWORD' });
 
+  req.body.show_me = true;
+
   return next();
 };
