@@ -14,6 +14,7 @@ export default {
       curso: 1,
       periodo: 1,
       escola: 1,
+      sala: 1,
     });
 
     return res.status(200).json(users);
