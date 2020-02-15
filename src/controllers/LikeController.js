@@ -34,12 +34,12 @@ export default {
   async destroy(req, res) {
     const { _id, likes } = req.user;
 
-    const user = await User.findOneAndUpdate({ _id }, {
+    await User.findOneAndUpdate({ _id }, {
       $unset: {
         likes,
       },
     }, { new: true });
 
-    return res.status(200).json(user);
+    return res.status(204).json();
   },
 };

@@ -20,25 +20,84 @@ export default {
   },
 
   async show(req, res) {
-    return res.status(200).json(req.user);
+    const {
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    } = req.user;
+
+    return res.status(200).json({
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    });
   },
 
   async store(req, res) {
-    const user = await User.create(req.body);
+    const { _id } = await User.create(req.body);
 
-    return res.status(201).json(user);
+    return res.status(201).json(_id);
   },
 
   async update(req, res) {
     const { _id } = req.user;
 
-    const user = await User.findOneAndUpdate({ _id }, req.body, {
+    const {
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
+    } = await User.findOneAndUpdate({ _id }, req.body, {
       new: true,
     });
 
     return res.status(200).json({
-      'Old User': req.user.toJSON(),
-      'New User': user.toJSON(),
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      escola,
+      curso,
     });
   },
 
@@ -47,6 +106,6 @@ export default {
 
     await User.findOneAndRemove({ _id });
 
-    return res.status(200).json(req.user);
+    return res.status(204).json();
   },
 };

@@ -1,17 +1,17 @@
 export default (req, res, next) => {
   const { contatos, password } = req.body;
 
-  if (!contatos) return res.status(404).json('Contatos não encontrados');
+  if (!contatos) return res.status(400).json({ error: 'CONTACTS NOT FOUND' });
 
   const { numero } = contatos;
 
   if (numero) {
-    if (numero.length !== 13) return res.status(400).json('Número inválido');
+    if (numero.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
   }
 
-  if (!password) return res.status(400).json('Não há senha');
+  if (!password) return res.status(400).json({ error: 'PASSWORD NOT FOUND' });
 
-  if (password.length < 6) return res.status(400).json('Senha inválida');
+  if (password.length < 6) return res.status(400).json({ error: 'INVALID PASSWORD' });
 
   return next();
 };
