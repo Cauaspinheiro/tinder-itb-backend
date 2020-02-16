@@ -16,7 +16,7 @@ export default async (req, res, next) => {
     escola = user.escola;
   }
 
-  const school = await School.findOne({ nome: escola, cursos: { $in: curso } });
+  const school = await School.findOne({ _id: escola, cursos: { $in: curso } });
 
   if (!school) return res.status(404).json({ error: 'COURSE NOT FOUND' });
 
