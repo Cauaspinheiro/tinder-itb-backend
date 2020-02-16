@@ -1,14 +1,14 @@
 export default {
   async index(req, res) {
-    const { user } = req;
+    const { user, users } = req;
 
-    const { newMatchs, matchs } = user;
+    const { newMatchs } = user;
 
     user.newMatchs = 0;
 
     await user.save();
 
-    return res.status(200).json({ matchs, newMatchs });
+    return res.status(200).json({ matchs: users, newMatchs });
   },
 
 
