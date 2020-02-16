@@ -4,11 +4,15 @@ import auth from '../middlewares/Global/auth';
 import authUser from '../middlewares/Global/authUser';
 import targetUser from '../middlewares/Global/targetUser';
 import user from '../middlewares/Global/user';
+import findUsers from '../middlewares/Match/findUsers';
 import includesUser from '../middlewares/Match/includesUser';
 
 
 export default (routes) => {
-  routes.get('/users/:id/matchs', auth, authUser, user, MatchController.index);
+  routes.get('/users/:id/matchs', auth, authUser,
+    user,
+    findUsers,
+    MatchController.index);
 
   routes.put('/users/:id/matchs', auth, authUser,
     user,
