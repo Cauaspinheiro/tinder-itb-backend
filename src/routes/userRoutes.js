@@ -12,6 +12,7 @@ import passwordHash from '../middlewares/User/password';
 import getPrefs from '../middlewares/User/prefs';
 import searchParams from '../middlewares/User/search';
 import contactUpdate from '../middlewares/User/updateInfo/contact';
+import courseUpdate from '../middlewares/User/updateInfo/course';
 import passwordUpdate from '../middlewares/User/updateInfo/password';
 
 export default (routes) => {
@@ -40,7 +41,7 @@ export default (routes) => {
     passwordHash,
     contactUpdate,
     getSchool,
-    getCourse,
+    courseUpdate,
     UserController.update);
 
   routes.delete('/users/:id', auth, sameUser,
