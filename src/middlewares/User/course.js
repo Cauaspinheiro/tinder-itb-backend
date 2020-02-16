@@ -2,13 +2,14 @@ import School from '../../models/School';
 import User from '../../models/User';
 
 export default async (req, res, next) => {
-  const { curso, id } = req.body;
+  const { curso } = req.body;
+  const { _id } = req.user;
   let { escola } = req.body;
 
   if (!curso) return next();
 
   if (!escola) {
-    const user = await User.findOne({ id });
+    const user = await User.findOne({ _id });
 
     if (!user.escola) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
