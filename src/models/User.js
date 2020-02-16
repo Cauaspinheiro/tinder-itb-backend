@@ -48,8 +48,9 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     escola: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
+      ref: 'School',
     },
     curso: {
       type: String,
