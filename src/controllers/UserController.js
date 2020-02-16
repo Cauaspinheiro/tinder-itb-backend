@@ -5,7 +5,6 @@ export default {
     const { prefs } = req;
 
     const users = await User.find(prefs, {
-      _id: 0,
       nome: 1,
       genero: 1,
       data_nascimento: 1,
