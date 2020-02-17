@@ -12,7 +12,7 @@ export default {
       ano: 1,
       curso: 1,
       periodo: 1,
-      escola: 1,
+      nome_escola: 1,
       sala: 1,
     });
 
@@ -35,7 +35,7 @@ export default {
       periodo,
       sala,
       show_me,
-      escola,
+      nome_escola,
       curso,
     } = req.user;
 
@@ -54,7 +54,7 @@ export default {
       periodo,
       sala,
       show_me,
-      escola,
+      nome_escola,
       curso,
     });
   },
@@ -79,7 +79,7 @@ export default {
       periodo,
       sala,
       show_me,
-      escola,
+      nome_escola,
       curso,
     } = await User.findOneAndUpdate({ _id }, req.body, {
       new: true,
@@ -96,7 +96,7 @@ export default {
       periodo,
       sala,
       show_me,
-      escola,
+      nome_escola,
       curso,
     });
   },

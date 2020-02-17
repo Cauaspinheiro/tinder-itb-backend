@@ -47,6 +47,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    nome_escola: {
+      type: String,
+      required: true,
+    },
     escola: {
       type: Schema.Types.ObjectId,
       required: true,
