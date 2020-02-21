@@ -11,13 +11,13 @@ export default (routes) => {
     user,
     DeslikeController.index);
 
-  routes.post('/users/deslikes', auth,
+  routes.post('/users/deslikes/:id', auth,
     user,
     targetUser,
     inArrays,
     DeslikeController.store);
 
-  routes.put('/users/deslikes', auth,
+  routes.put('/users/deslikes/:id', auth,
     user,
     targetUser,
     inDeslikes,
