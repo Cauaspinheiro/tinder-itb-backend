@@ -1,8 +1,6 @@
 import UserController from '../controllers/UserController';
 
 import auth from '../middlewares/Global/auth';
-import authUser from '../middlewares/Global/authUser';
-import sameUser from '../middlewares/Global/sameUser';
 import getSchool from '../middlewares/Global/school';
 import getUser from '../middlewares/Global/user';
 import getCourse from '../middlewares/User/course';
@@ -17,7 +15,7 @@ import passwordUpdate from '../middlewares/User/updateInfo/password';
 
 export default (routes) => {
   routes.get('/users', auth,
-    authUser,
+    getUser,
     searchParams,
     getPrefs,
     UserController.index);
@@ -31,11 +29,11 @@ export default (routes) => {
     UserController.store);
 
 
-  routes.get('/users/:id', auth, sameUser,
+  routes.get('/users/show', auth,
     getUser,
     UserController.show);
 
-  routes.put('/users/:id', auth, sameUser,
+  routes.put('/users', auth,
     getUser,
     passwordUpdate,
     passwordHash,
@@ -44,7 +42,7 @@ export default (routes) => {
     courseUpdate,
     UserController.update);
 
-  routes.delete('/users/:id', auth, sameUser,
+  routes.delete('/users', auth,
     getUser,
     UserController.destroy);
 };
