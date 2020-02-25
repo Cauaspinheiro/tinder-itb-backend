@@ -50,6 +50,6 @@ export default {
 
     school = await School.findOneAndDelete({ _id });
 
-    return res.status(204).json();
+    return res.status(204).end();
   },
 };

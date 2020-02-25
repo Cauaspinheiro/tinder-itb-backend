@@ -107,6 +107,6 @@ export default {
 
     await User.findOneAndRemove({ _id });
 
-    return res.status(204).json();
+    return res.status(204).end();
   },
 };
