@@ -1,13 +1,13 @@
 {
   "name": "tinder-itb-backend",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "main": "index.js",
   "repository": "https://github.com/Cauaspinheiro/tinder-itb-backend.git",
   "author": "Cauaspinheiro <56241309+Cauaspinheiro@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "commit": "git-cz"
+    "ct": "git-cz"
   },
   "husky": {
     "hooks": {

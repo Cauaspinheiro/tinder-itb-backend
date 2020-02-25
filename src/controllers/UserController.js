@@ -3,32 +3,102 @@ import User from '../models/User';
 export default {
   async index(req, res) {
     const { prefs } = req;
+    const { page = 1 } = req.query;
 
-    const users = await User.find(prefs);
+    const users = await User.find(prefs, {
+      nome: 1,
+      genero: 1,
+      data_nascimento: 1,
+      bio: 1,
+      ano: 1,
+      curso: 1,
+      periodo: 1,
+      nome_escola: 1,
+      sala: 1,
+    }).skip(10 * (page - 1)).limit(10);
 
-    return res.json(users);
+    return res.status(200).json(users);
   },
 
   async show(req, res) {
-    return res.json(req.user);
+    const {
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      nome_escola,
+      curso,
+    } = req.user;
+
+    return res.status(200).json({
+      likes,
+      deslikes,
+      matchs,
+      id,
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      nome_escola,
+      curso,
+    });
   },
 
   async store(req, res) {
-    const user = await User.create(req.body);
+    const { _id } = await User.create(req.body);
 
-    return res.json(user);
+    return res.status(201).json(_id);
   },
 
   async update(req, res) {
     const { _id } = req.user;
 
-    const user = await User.findOneAndUpdate({ _id }, req.body, {
+    const {
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      nome_escola,
+      curso,
+    } = await User.findOneAndUpdate({ _id }, req.body, {
       new: true,
     });
 
-    return res.json({
-      'Old User': req.user.toJSON(),
-      'New User': user.toJSON(),
+    return res.status(200).json({
+      nome,
+      genero,
+      data_nascimento,
+      bio,
+      detalhes,
+      contatos,
+      ano,
+      periodo,
+      sala,
+      show_me,
+      nome_escola,
+      curso,
     });
   },
 
@@ -37,6 +107,6 @@ export default {
 
     await User.findOneAndRemove({ _id });
 
-    return res.json(req.user);
+    return res.status(204).end();
   },
 };

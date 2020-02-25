@@ -3,7 +3,7 @@ export default (req, res, next) => {
 
   if (!password) return next();
 
-  if (password.length < 6) return res.json('Senha inválida');
+  if (password.length < 6) return res.status(400).json({ error: 'INVALID PASSWORD' });
 
   return next();
 };

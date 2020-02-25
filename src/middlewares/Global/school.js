@@ -5,11 +5,13 @@ export default async (req, res, next) => {
 
   if (!escola) return next();
 
-  const school = await School.findOne({ nome: escola });
+  const school = await School.findOne({ _id: escola });
 
-  if (!school) return res.json('Escola não encontrada');
+  if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
   req.school = school;
+
+  req.body.nome_escola = school.nome;
 
   return next();
 };

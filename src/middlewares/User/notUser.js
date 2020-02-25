@@ -5,7 +5,7 @@ export default async (req, res, next) => {
 
   const user = await User.findOne({ email });
 
-  if (user) return res.json('Usuário já existe');
+  if (user) return res.status(400).json({ error: 'USER ALREADY EXISTS' });
 
   return next();
 };

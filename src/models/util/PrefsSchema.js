@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const PrefsSchema = new mongoose.Schema(
   {
-    escola: String,
+    escola: { type: Schema.Types.ObjectId, ref: 'School' },
     generos: [String],
     anos: [Number],
     cursos: [String],

@@ -26,7 +26,6 @@ const UserSchema = new mongoose.Schema(
     },
     detalhes: {
       type: Map,
-      required: true,
     },
     contatos: {
       type: Map,
@@ -48,9 +47,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    escola: {
+    nome_escola: {
       type: String,
       required: true,
+    },
+    escola: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'School',
     },
     curso: {
       type: String,
@@ -86,6 +90,6 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-UserSchema.virtual('password').get(() => 'Hello Password');
+UserSchema.virtual('password');
 
 export default mongoose.model('User', UserSchema);

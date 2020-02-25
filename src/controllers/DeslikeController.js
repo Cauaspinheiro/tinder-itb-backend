@@ -4,7 +4,7 @@ export default {
   async index(req, res) {
     const { user } = req;
 
-    return res.json(user.deslikes);
+    return res.status(200).json(user.deslikes);
   },
 
   async store(req, res) {
@@ -14,7 +14,7 @@ export default {
 
     await user.save();
 
-    return res.json(user.deslikes);
+    return res.status(201).json(user.deslikes);
   },
 
   async update(req, res) {
@@ -28,18 +28,18 @@ export default {
 
     await user.save();
 
-    return res.json(user.deslikes);
+    return res.status(200).json(user.deslikes);
   },
 
   async destroy(req, res) {
     const { _id, deslikes } = req.user;
 
-    const user = await User.findOneAndUpdate({ _id }, {
+    await User.findOneAndUpdate({ _id }, {
       $unset: {
         deslikes,
       },
     }, { new: true });
 
-    return res.json(user);
+    return res.status(204).end();
   },
 };
