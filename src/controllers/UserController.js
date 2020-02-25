@@ -14,6 +14,7 @@ export default {
       periodo: 1,
       nome_escola: 1,
       sala: 1,
+      images: 1,
     });
 
     return res.status(200).json(users);
@@ -37,6 +38,7 @@ export default {
       show_me,
       nome_escola,
       curso,
+      images,
     } = req.user;
 
     return res.status(200).json({
@@ -56,6 +58,7 @@ export default {
       show_me,
       nome_escola,
       curso,
+      images,
     });
   },
 
