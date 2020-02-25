@@ -3,6 +3,7 @@ import User from '../models/User';
 export default {
   async index(req, res) {
     const { prefs } = req;
+    const { page = 1 } = req.query;
 
     const users = await User.find(prefs, {
       nome: 1,
@@ -14,7 +15,7 @@ export default {
       periodo: 1,
       nome_escola: 1,
       sala: 1,
-    });
+    }).skip(10 * (page - 1)).limit(10);
 
     return res.status(200).json(users);
   },
