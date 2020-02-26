@@ -15,6 +15,7 @@ export default {
       periodo: 1,
       nome_escola: 1,
       sala: 1,
+      images: 1,
     }).skip(10 * (page - 1)).limit(10);
 
     return res.status(200).json(users);
@@ -34,9 +35,11 @@ export default {
       sala: user.sala,
       nome_escola: user.nome_escola,
       curso: user.curso,
+      images: user.images,
     };
 
     return res.status(200).json(response);
   },
+
 
 };
