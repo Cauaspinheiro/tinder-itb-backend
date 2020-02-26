@@ -8,11 +8,12 @@ export default {
       nome: user.nome,
       bio: user.bio,
       genero: user.genero,
+      data_nascimento: user.data_nascimento,
       escola: user.escola,
+      nome_escola: user.nome_escola,
       curso: user.curso,
       serie: user.serie,
       sala: user.sala,
-      imagens: user.imagens,
       contatos: user.contatos,
       show_me: user.show_me,
     };
