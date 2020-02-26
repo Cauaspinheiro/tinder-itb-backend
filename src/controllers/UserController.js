@@ -3,6 +3,7 @@ import User from '../models/User';
 export default {
   async index(req, res) {
     const { prefs } = req;
+    const { page = 1 } = req.query;
 
     const users = await User.find(prefs, {
       nome: 1,
@@ -15,100 +16,30 @@ export default {
       nome_escola: 1,
       sala: 1,
       images: 1,
-    });
+    }).skip(10 * (page - 1)).limit(10);
 
     return res.status(200).json(users);
   },
 
   async show(req, res) {
-    const {
-      likes,
-      deslikes,
-      matchs,
-      id,
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-      images,
-    } = req.user;
+    const { targetUser: user } = req;
 
-    return res.status(200).json({
-      likes,
-      deslikes,
-      matchs,
-      id,
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-      images,
-    });
+    const response = {
+      nome: user.nome,
+      genero: user.genero,
+      bio: user.bio,
+      data_nascimento: user.data_nascimento,
+      detalhes: user.detalhes,
+      ano: user.ano,
+      periodo: user.periodo,
+      sala: user.sala,
+      nome_escola: user.nome_escola,
+      curso: user.curso,
+      images: user.images,
+    };
+
+    return res.status(200).json(response);
   },
 
-  async store(req, res) {
-    const { _id } = await User.create(req.body);
 
-    return res.status(201).json(_id);
-  },
-
-  async update(req, res) {
-    const { _id } = req.user;
-
-    const {
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    } = await User.findOneAndUpdate({ _id }, req.body, {
-      new: true,
-    });
-
-    return res.status(200).json({
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    });
-  },
-
-  async destroy(req, res) {
-    const { _id } = req.user;
-
-    await User.findOneAndRemove({ _id });
-
-    return res.status(204).json();
-  },
 };

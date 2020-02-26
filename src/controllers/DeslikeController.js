@@ -40,6 +40,6 @@ export default {
       },
     }, { new: true });
 
-    return res.status(204).json();
+    return res.status(204).end();
   },
 };
