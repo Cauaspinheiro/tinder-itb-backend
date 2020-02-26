@@ -4,9 +4,9 @@ import User from '../models/User';
 
 export default {
   async store(req, res) {
-    const { path: id } = req.file;
+    const { publicUrl } = req;
 
-    return res.status(200).json(id);
+    return res.status(200).json(publicUrl);
   },
 
   async index(req, res) {
