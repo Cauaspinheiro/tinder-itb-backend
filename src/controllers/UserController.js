@@ -21,7 +21,7 @@ export default {
   },
 
   async show(req, res) {
-    const { user } = req;
+    const { targetUser: user } = req;
 
     const response = {
       nome: user.nome,
