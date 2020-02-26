@@ -19,13 +19,13 @@ export default (routes) => {
     matches,
     LikeController.store);
 
-  routes.put('/users/likes/:id', auth,
+  routes.put('/profile/likes/:id', auth,
     user,
     targetUser,
     inLikes,
     LikeController.update);
 
-  routes.delete('/users/likes', auth,
+  routes.delete('/profile/likes', auth,
     user,
     LikeController.destroy);
 };

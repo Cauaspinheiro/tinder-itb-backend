@@ -17,13 +17,13 @@ export default (routes) => {
     inArrays,
     DeslikeController.store);
 
-  routes.put('/users/deslikes/:id', auth,
+  routes.put('/profile/deslikes/:id', auth,
     user,
     targetUser,
     inDeslikes,
     DeslikeController.update);
 
-  routes.delete('/users/deslikes', auth,
+  routes.delete('/profile/deslikes', auth,
     user,
     DeslikeController.destroy);
 };
