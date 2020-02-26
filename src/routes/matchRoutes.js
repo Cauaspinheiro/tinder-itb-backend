@@ -8,12 +8,12 @@ import includesUser from '../middlewares/Match/includesUser';
 
 
 export default (routes) => {
-  routes.get('/users/matchs', auth,
+  routes.get('/profile/matchs', auth,
     user,
     findUsers,
     MatchController.index);
 
-  routes.put('/users/matchs', auth,
+  routes.put('/profile/matchs', auth,
     user,
     targetUser,
     includesUser,

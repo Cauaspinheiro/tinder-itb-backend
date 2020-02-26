@@ -8,7 +8,7 @@ import notPrefs from '../middlewares/Prefs/notPrefs';
 import getPrefs from '../middlewares/Prefs/prefs';
 
 export default (routes) => {
-  routes.post('/users/prefs', auth,
+  routes.post('/profile/prefs', auth,
     getUser,
     notPrefs,
     getSchool,
