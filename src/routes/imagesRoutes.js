@@ -8,6 +8,7 @@ import file from '../middlewares/Images/file';
 import linkUser from '../middlewares/Images/linkUser';
 import max from '../middlewares/Images/max';
 import min from '../middlewares/Images/min';
+import store from '../middlewares/Images/store';
 import userRemove from '../middlewares/Images/user';
 
 import multerConfig from '../config/multer';
@@ -19,6 +20,7 @@ export default (routes) => {
     max,
     multer(multerConfig).single('file'),
     file,
+    store,
     linkUser,
     ImageController.store);
 
