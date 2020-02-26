@@ -2,16 +2,16 @@ import UserController from '../controllers/UserController';
 
 import auth from '../middlewares/Global/auth';
 import targetUser from '../middlewares/Global/targetUser';
-import getUser from '../middlewares/Global/user';
-import getPrefs from '../middlewares/User/prefs';
+import user from '../middlewares/Global/user';
+import prefs from '../middlewares/User/prefs';
 import searchParams from '../middlewares/User/search';
 
 
 export default (routes) => {
   routes.get('/users', auth,
-    getUser,
+    user,
     searchParams,
-    getPrefs,
+    prefs,
     UserController.index);
 
   routes.get('/users/:id',
