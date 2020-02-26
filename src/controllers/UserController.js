@@ -21,43 +21,22 @@ export default {
   },
 
   async show(req, res) {
-    const {
-      likes,
-      deslikes,
-      matchs,
-      id,
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    } = req.user;
+    const { user } = req;
 
-    return res.status(200).json({
-      likes,
-      deslikes,
-      matchs,
-      id,
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    });
+    const response = {
+      nome: user.nome,
+      genero: user.genero,
+      bio: user.bio,
+      data_nascimento: user.data_nascimento,
+      detalhes: user.detalhes,
+      ano: user.ano,
+      periodo: user.periodo,
+      sala: user.sala,
+      nome_escola: user.nome_escola,
+      curso: user.curso,
+    };
+
+    return res.status(200).json(response);
   },
 
 };
