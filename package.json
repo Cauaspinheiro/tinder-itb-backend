@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "ct": "git-cz",
-    "debug": "node --inspect-brk -r sucrase/register src/server.js"
-
+    "debug": "node --inspect-brk -r sucrase/register src/server.js",
+    "start": "sucrase-node src/server.js"
   },
   "husky": {
     "hooks": {
