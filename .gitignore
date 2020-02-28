@@ -105,3 +105,6 @@ dist
 
 # Temporary directory
 tmp
+
+# FIREBASE SERVICE ACCOUNT
+serviceAccount.json
