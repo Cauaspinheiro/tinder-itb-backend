@@ -14,9 +14,9 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 - Abra a pasta do repositório em um editor de texto (recomendação: [Visual Studio Code](https://code.visualstudio.com/))
 - Com a pasta aberta, crie um arquivo chamado .env (fora de qualquer pasta dentro do repositório)
 
-      	 ![arquivo.env](https://i.imgur.com/Ou8eXGt.png)
+  ![arquivo.env](https://i.imgur.com/Ou8eXGt.png)
 
-      	 Esse arquivo vai nos possibilitar criar variaveis de ambiente para a API
+  Esse arquivo vai nos possibilitar criar variaveis de ambiente para a API
 
 **MongoDB**
 
@@ -46,7 +46,7 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
   ![Firebase](https://i.imgur.com/9V8UIZP.png)
 - Depois, crie um arquivo chamado serviceAccount.json na pasta do repositório
 
-      	  ![Arquivo json](https://i.imgur.com/1fpYVkU.png)
+   ![Arquivo json](https://i.imgur.com/1fpYVkU.png)
 
 - Cole todo o conteudo neste arquivo
 
