@@ -108,3 +108,6 @@ tmp
 
 # Firebase Service Account JSON
 serviceAccount.json
+
+# NPM configs
+.npmrc
