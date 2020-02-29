@@ -18,7 +18,7 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
       	 Esse arquivo vai nos possibilitar criar variaveis de ambiente para a API
 
-  **MongoDB**
+**MongoDB**
 
 - Siga os seguintes passos para criar uma key de acesso ao seu Cluster do MongoDB
   https://codeforgeek.com/mongodb-atlas-node-js/
@@ -62,14 +62,16 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 **Instalação dos pacotes**
 
-- Dentro na pasta do projeto, rode o seguinte comando: - Se você estiver usando o yarn: `yarn` - Se você estiver usando o npm: `npm install`
+- Dentro na pasta do projeto, rode o seguinte comando: - Se você estiver usando o yarn: `yarn` 
+- Se você estiver usando o npm: `npm install`
 
 **Pronto!** você já pode começar a testar o aplicativo, vá para a aba Scripts para ver quais scripts estão disponiveis para uso
 
 ## Scripts
 
 - Rodar a api com reload automatico utilizando o [nodemon](https://github.com/remy/nodemon):
-  - Se você estiver usando o yarn: `yarn dev` - Se você estiver usando o npm: `npm dev`
+  - Se você estiver usando o yarn: `yarn dev` 
+  - Se você estiver usando o npm: `npm dev`
 
 ## Formas de acesso a API
 
@@ -79,7 +81,7 @@ Estamos documentando a API, por isso é recomendado usar o aplicativo do React N
 
 - Utilize o projeto [https://github.com/AdamAugustinsky/tinder_itb-mobile](https://github.com/AdamAugustinsky/tinder_itb-mobile)
 
-  **Insomnia**
+**Insomnia**
 
 - Baixe o insomnia em https://insomnia.rest/download/
 - Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-v0.2.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Ftinder-itb-backend%2Fhotfix%2Ftinder-itb-insomnia-v0.2.0.json)
