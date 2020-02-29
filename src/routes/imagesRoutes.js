@@ -9,6 +9,7 @@ import linkUser from '../middlewares/Images/linkUser';
 import max from '../middlewares/Images/max';
 import min from '../middlewares/Images/min';
 import store from '../middlewares/Images/store';
+import tmp from '../middlewares/Images/tmp';
 import userRemove from '../middlewares/Images/user';
 
 import multerConfig from '../config/multer';
@@ -22,6 +23,7 @@ export default (routes) => {
     file,
     store,
     linkUser,
+    tmp,
     ImageController.store);
 
   routes.get('/uploads', auth,
