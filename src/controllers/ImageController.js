@@ -41,6 +41,10 @@ export default {
     const { index } = req.params;
     const { images, _id } = req.user;
 
+    if (index === '0' || index.isNaN) {
+      return res.status(400).json({ error: 'INDEX NOT VALID' });
+    }
+
     if (!images[index]) return res.status(404).json({ error: 'FILE NOT FOUND' });
 
     const profile = images[0];
