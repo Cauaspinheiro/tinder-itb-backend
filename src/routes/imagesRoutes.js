@@ -4,13 +4,13 @@ import ImageController from '../controllers/ImageController';
 
 import auth from '../middlewares/Global/auth';
 import getUser from '../middlewares/Global/user';
+import destroy from '../middlewares/Images/delete';
 import file from '../middlewares/Images/file';
 import linkUser from '../middlewares/Images/linkUser';
 import max from '../middlewares/Images/max';
 import min from '../middlewares/Images/min';
 import store from '../middlewares/Images/store';
 import tmp from '../middlewares/Images/tmp';
-import userRemove from '../middlewares/Images/user';
 
 import multerConfig from '../config/multer';
 
@@ -37,7 +37,7 @@ export default (routes) => {
   routes.delete('/uploads/:index', auth,
     getUser,
     min,
-    userRemove,
+    destroy,
     ImageController.delete);
 
   routes.put('/uploads/:index', auth,
