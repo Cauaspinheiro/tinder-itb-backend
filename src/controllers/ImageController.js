@@ -4,7 +4,7 @@ export default {
   async store(req, res) {
     const { publicUrl } = req;
 
-    return res.status(200).json(publicUrl);
+    return res.status(201).json(publicUrl);
   },
 
   async index(req, res) {
