@@ -103,8 +103,9 @@ dist
 # TernJS port file
 .tern-port
 
-# Temporary directory
-tmp
+# Temporary files
+tmp/uploads/*
+!tmp/uploads/.gitkeep
 
 # Firebase Service Account JSON
 serviceAccount.json
