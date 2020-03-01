@@ -106,5 +106,11 @@ dist
 # Temporary directory
 tmp
 
+# Firebase Service Account JSON
+serviceAccount.json
+
+# NPM configs
+.npmrc
+
 # FIREBASE SERVICE ACCOUNT
 serviceAccount.json

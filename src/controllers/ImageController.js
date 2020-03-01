@@ -1,12 +1,10 @@
-import fs from 'fs';
-
 import User from '../models/User';
 
 export default {
   async store(req, res) {
-    const { path: id } = req.file;
+    const { publicUrl } = req;
 
-    return res.status(200).json(id);
+    return res.status(201).json(publicUrl);
   },
 
   async index(req, res) {
@@ -26,15 +24,15 @@ export default {
     return res.status(200).json(image);
   },
 
-  delete(req, res) {
-    const { image } = req;
+  async delete(req, res) {
+    const { images, _id } = req.user;
+    const { index } = req.params;
 
-    if (!image) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    req.image = images[index];
 
-    fs.unlink(image, (err) => {
-      if (err) { return res.status(404).json({ error: 'FILE NOT FOUND' }); }
-      return res.status(204).end();
-    });
+    images.splice(index, 1);
+
+    await User.updateOne({ _id }, { images });
 
     return res.status(204).end();
   },
@@ -42,6 +40,10 @@ export default {
   async update(req, res) {
     const { index } = req.params;
     const { images, _id } = req.user;
+
+    if (index === '0' || index.isNaN) {
+      return res.status(400).json({ error: 'INDEX NOT VALID' });
+    }
 
     if (!images[index]) return res.status(404).json({ error: 'FILE NOT FOUND' });
 
