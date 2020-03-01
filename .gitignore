@@ -111,3 +111,6 @@ serviceAccount.json
 
 # NPM configs
 .npmrc
+
+# FIREBASE SERVICE ACCOUNT
+serviceAccount.json
