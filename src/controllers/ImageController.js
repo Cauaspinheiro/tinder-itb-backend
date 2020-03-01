@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import User from '../models/User';
 
 export default {
@@ -26,15 +24,15 @@ export default {
     return res.status(200).json(image);
   },
 
-  delete(req, res) {
-    const { image } = req;
+  async delete(req, res) {
+    const { images, _id } = req.user;
+    const { index } = req.params;
 
-    if (!image) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    req.image = images[index];
 
-    fs.unlink(image, (err) => {
-      if (err) { return res.status(404).json({ error: 'FILE NOT FOUND' }); }
-      return res.status(204).end();
-    });
+    images.splice(index, 1);
+
+    await User.updateOne({ _id }, { images });
 
     return res.status(204).end();
   },
