@@ -97,7 +97,7 @@ Estamos documentando a API, por isso é recomendado usar o aplicativo do React N
 **Insomnia**
 
 - Baixe o insomnia em https://insomnia.rest/download/
-- Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-v0.2.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Ftinder-itb-backend%2Fhotfix%2Ftinder-itb-insomnia-v0.2.0.json)
+- Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-backend-v0.3.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Finsomnia%2Fmaster%2Ftinder-itb-backend%2Ftinder-itb-insomnia-v0.3.0.json%3Ftoken%3DANNCZHPSRG4IA5AQZCLS2PK6MLQOM)
 
 ## Notas
 
