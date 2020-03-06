@@ -78,9 +78,13 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 ## Scripts
 
-- Rodar a api com reload automatico utilizando o [nodemon](https://github.com/remy/nodemon):
+- Rodar a api com reload automático utilizando o [nodemon](https://github.com/remy/nodemon):
   - Se você estiver usando o yarn: `yarn dev` 
   - Se você estiver usando o npm: `npm dev`
+  
+- Rodar a api sem reload automático:
+  - Se você estiver usando o yarn: `yarn start`
+  - Se você estiver usando o npm: `npm start`
 
 ## Formas de acesso a API
 
