@@ -8,7 +8,7 @@ import notPrefs from '../middlewares/Prefs/notPrefs';
 import getPrefs from '../middlewares/Prefs/prefs';
 
 export default (routes) => {
-  routes.post('/users/prefs', auth,
+  routes.post('/profile/prefs', auth,
     getUser,
     notPrefs,
     getSchool,
@@ -16,17 +16,17 @@ export default (routes) => {
     PrefsController.store);
 
 
-  routes.get('/users/prefs', auth,
+  routes.get('/profile/prefs', auth,
     getUser,
     getPrefs,
     PrefsController.show);
 
-  routes.delete('/users/prefs', auth,
+  routes.delete('/profile/prefs', auth,
     getUser,
     getPrefs,
     PrefsController.destroy);
 
-  routes.put('/users/prefs', auth,
+  routes.put('/profile/prefs', auth,
     getUser,
     getPrefs,
     getSchool,

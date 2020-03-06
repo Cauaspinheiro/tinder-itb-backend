@@ -8,24 +8,24 @@ import inLikes from '../middlewares/Likes/likes';
 import matches from '../middlewares/Likes/match';
 
 export default (routes) => {
-  routes.get('/users/likes', auth,
+  routes.get('/profile/likes', auth,
     user,
     LikeController.index);
 
-  routes.post('/users/likes/:id', auth,
+  routes.post('/profile/likes/:id', auth,
     user,
     targetUser,
     inArray,
     matches,
     LikeController.store);
 
-  routes.put('/users/likes/:id', auth,
+  routes.put('/profile/likes/:id', auth,
     user,
     targetUser,
     inLikes,
     LikeController.update);
 
-  routes.delete('/users/likes', auth,
+  routes.delete('/profile/likes', auth,
     user,
     LikeController.destroy);
 };

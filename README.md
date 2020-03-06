@@ -1,3 +1,4 @@
+
 # Tinder ITB - REST API
 
 Como o Tinder, mas focado para alunos do ITB, nossa escola.
@@ -22,7 +23,7 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 - Siga os seguintes passos para criar uma key de acesso ao seu Cluster do MongoDB
   https://codeforgeek.com/mongodb-atlas-node-js/
-- Com a key criada, coloque o seguinte codigo no seu arquivo .env, trocando o que for pedido:
+- Com a key criada, coloque o seguinte codigo no seu arquivo .env, trocando o que for pedido, sem as tags <>:
   `MONGO_KEY=<COLOQUE-SUA-KEY-AQUI>`
 
 **Importante!** lembre-se de trocar o `<password>` na sua key do mongoDB pela sua senha
@@ -31,7 +32,7 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 - Entre no site https://www.md5online.org/
 - Crie um hash para a sua API, podendo ser qualquer cojunto de letras
-- Com o hash criado, coloque o seguinte codigo no seu arquivo .env, trocando o que for pedido:
+- Com o hash criado, coloque o seguinte codigo no seu arquivo .env, trocando o que for pedido, sem as tags <>:
   `JWT_SECRET=<COLOQUE-SEU-HASH-AQUI>`
   `JWT_EXPIRES=30d`
 
@@ -43,12 +44,20 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 - Crie um projeto no firebase: https://firebase.google.com/?hl=pt-BR
 - Dentro do projeto, clique na engrenagem do lado de "Project overview" > configurações do projeto > Contas de serviço > SDK admin do firebase > node.js > gerar nova chave privada > gerar chave
+  
   ![Firebase](https://i.imgur.com/9V8UIZP.png)
 - Depois, crie um arquivo chamado serviceAccount.json na pasta do repositório
 
    ![Arquivo json](https://i.imgur.com/1fpYVkU.png)
 
 - Cole todo o conteudo neste arquivo
+- Entre em "Storage" e copie o link do seu bucket, sem o "gs://"
+
+	![Storage Bucket Firebase](https://i.imgur.com/SCeTMWW.png)
+
+- Nesse caso, ficaria apenas `tinder-itb.appspot.com`
+- No seu arquivo .env, coloque o seguinte código, trocando o que for pedido, sem as tags <>:
+ `FIREBASE_BUCKET=<SEU-STORAGE-BUCKET>`
 
 **NodeJS**
 
@@ -69,9 +78,13 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 ## Scripts
 
-- Rodar a api com reload automatico utilizando o [nodemon](https://github.com/remy/nodemon):
+- Rodar a api com reload automático utilizando o [nodemon](https://github.com/remy/nodemon):
   - Se você estiver usando o yarn: `yarn dev` 
   - Se você estiver usando o npm: `npm dev`
+  
+- Rodar a api sem reload automático:
+  - Se você estiver usando o yarn: `yarn start`
+  - Se você estiver usando o npm: `npm start`
 
 ## Formas de acesso a API
 
@@ -84,7 +97,7 @@ Estamos documentando a API, por isso é recomendado usar o aplicativo do React N
 **Insomnia**
 
 - Baixe o insomnia em https://insomnia.rest/download/
-- Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-v0.2.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Ftinder-itb-backend%2Fhotfix%2Ftinder-itb-insomnia-v0.2.0.json)
+- Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-backend-v0.3.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Finsomnia%2Fmaster%2Ftinder-itb-backend%2Ftinder-itb-insomnia-v0.3.0.json%3Ftoken%3DANNCZHPSRG4IA5AQZCLS2PK6MLQOM)
 
 ## Notas
 
