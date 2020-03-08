@@ -10,4 +10,4 @@ mongoose.connect(process.env.MONGO_KEY, {
   useFindAndModify: false,
 });
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
