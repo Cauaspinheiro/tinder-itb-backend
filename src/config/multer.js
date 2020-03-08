@@ -12,7 +12,7 @@ export default {
       crypto.randomBytes(20, (err, hash) => {
         if (err) cb(err);
 
-        const filename = `${hash.toString('hex')}-${Date.now()}`;
+        const filename = `${hash.toString('hex')}-${Date.now()}${file.originalname.substring(file.originalname.lastIndexOf('.'))}`;
 
         cb(null, filename);
       });
