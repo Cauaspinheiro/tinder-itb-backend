@@ -9,10 +9,10 @@ export default {
       cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'));
     },
     filename: (req, file, cb) => {
-      crypto.randomBytes(12, (err, hash) => {
+      crypto.randomBytes(20, (err, hash) => {
         if (err) cb(err);
 
-        const filename = `${hash.toString('hex')}-${Date.now()}-${file.originalname}`;
+        const filename = `${hash.toString('hex')}-${Date.now()}`;
 
         cb(null, filename);
       });
