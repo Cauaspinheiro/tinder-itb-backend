@@ -51,6 +51,11 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
   ![Arquivo json](https://i.imgur.com/1fpYVkU.png)
 
 - Cole todo o conteudo neste arquivo
+
+- No arquivo .env, cria as seguintes variáveis pegando as informações que estão em serviceAccount.json:
+
+  ![.env variaveis de serviço](https://i.imgur.com/LgLVUgN.png)
+
 - Entre em "Storage" e copie o link do seu bucket, sem o "gs://"
 
   ![Storage Bucket Firebase](https://i.imgur.com/SCeTMWW.png)
