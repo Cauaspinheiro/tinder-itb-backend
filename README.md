@@ -81,7 +81,7 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
 
 **Pronto!** você já pode começar a testar o aplicativo, vá para a aba Scripts para ver quais scripts estão disponiveis para uso
 
-### Scripts
+## Scripts
 
 - Rodar a api com reload automático utilizando o [nodemon](https://github.com/remy/nodemon):
 
@@ -92,19 +92,19 @@ Uma rest API em Node.js, usando o framework [Express](https://github.com/express
   - Se você estiver usando o yarn: `yarn start`
   - Se você estiver usando o npm: `npm start`
 
-### Formas de acesso a API
+## Formas de acesso a API
 
 Estamos documentando a API, por isso é recomendado usar o aplicativo do React Native, publicaremos o quanto antes a documentação completa da API
 
-#### Aplicativo React Native
+### Aplicativo React Native
 
 - Utilize o projeto [https://github.com/AdamAugustinsky/tinder_itb-mobile](https://github.com/AdamAugustinsky/tinder_itb-mobile)
 
-#### Insomnia
+### Insomnia
 
 - Baixe o insomnia em <https://insomnia.rest/download/>
 - Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-backend-v0.3.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Finsomnia%2Fmaster%2Ftinder-itb-backend%2Ftinder-itb-insomnia-v0.3.0.json%3Ftoken%3DANNCZHPSRG4IA5AQZCLS2PK6MLQOM)
 
-### Notas
+## Notas
 
 - Esse projeto ainda está em fase de desenvolvimento, por isso, erros ou falhas serão comuns, se acontecer qualquer erro enquanto você está mexendo nesse projeto, por favor crie uma [Issue](https://github.com/Cauaspinheiro/tinder-itb-backend/issues) no Github
