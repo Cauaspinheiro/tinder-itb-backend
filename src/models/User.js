@@ -24,9 +24,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    detalhes: {
-      type: Map,
-    },
     contatos: {
       type: Map,
       required: true,
