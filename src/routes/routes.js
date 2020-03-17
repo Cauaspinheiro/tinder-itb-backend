@@ -12,15 +12,14 @@ import userRoutes from './userRoutes';
 
 const routes = Router();
 
-deslikesRoutes(routes);
-likesRoutes(routes);
-prefsRoutes(routes);
-schoolRoutes(routes);
-userRoutes(routes);
-matchsRoutes(routes);
-sessionRoutes(routes);
-profileRoutes(routes);
-imagesRoutes(routes);
-
+routes.use(deslikesRoutes);
+routes.use(imagesRoutes);
+routes.use(likesRoutes);
+routes.use(matchsRoutes);
+routes.use(prefsRoutes);
+routes.use(profileRoutes);
+routes.use(schoolRoutes);
+routes.use(sessionRoutes);
+routes.use(userRoutes);
 
 export default routes;

@@ -1,3 +1,5 @@
+import { Router } from 'express';
+
 import ProfileController from '../controllers/ProfileController';
 
 import auth from '../middlewares/Global/auth';
@@ -11,28 +13,30 @@ import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
 
-export default (routes) => {
-  routes.get('/profile', auth, user, ProfileController.show);
+const routes = Router();
 
-  routes.post('/profile',
-    notUser,
-    checkInfo,
-    passwordHash,
-    getSchool,
-    getCourse,
-    ProfileController.store);
+routes.get('/profile', auth, user, ProfileController.show);
+
+routes.post('/profile',
+  notUser,
+  checkInfo,
+  passwordHash,
+  getSchool,
+  getCourse,
+  ProfileController.store);
 
 
-  routes.put('/profile', auth,
-    user,
-    passwordUpdate,
-    passwordHash,
-    contactUpdate,
-    getSchool,
-    courseUpdate,
-    ProfileController.update);
+routes.put('/profile', auth,
+  user,
+  passwordUpdate,
+  passwordHash,
+  contactUpdate,
+  getSchool,
+  courseUpdate,
+  ProfileController.update);
 
-  routes.delete('/profile', auth,
-    user,
-    ProfileController.destroy);
-};
+routes.delete('/profile', auth,
+  user,
+  ProfileController.destroy);
+
+export default routes;

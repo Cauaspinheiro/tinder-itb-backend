@@ -1,3 +1,4 @@
+import { Router } from 'express';
 import multer from 'multer';
 
 import ImageController from '../controllers/ImageController';
@@ -15,32 +16,34 @@ import tmp from '../middlewares/Images/tmp';
 import multerConfig from '../config/multer';
 
 
-export default (routes) => {
-  routes.post('/uploads', auth,
-    getUser,
-    max,
-    multer(multerConfig).single('file'),
-    file,
-    store,
-    linkUser,
-    tmp,
-    ImageController.store);
+const routes = Router();
 
-  routes.get('/uploads', auth,
-    getUser,
-    ImageController.index);
+routes.post('/uploads', auth,
+  getUser,
+  max,
+  multer(multerConfig).single('file'),
+  file,
+  store,
+  linkUser,
+  tmp,
+  ImageController.store);
 
-  routes.get('/uploads/:index', auth,
-    getUser,
-    ImageController.show);
+routes.get('/uploads', auth,
+  getUser,
+  ImageController.index);
 
-  routes.delete('/uploads/:index', auth,
-    getUser,
-    min,
-    destroy,
-    ImageController.delete);
+routes.get('/uploads/:index', auth,
+  getUser,
+  ImageController.show);
 
-  routes.put('/uploads/:index', auth,
-    getUser,
-    ImageController.update);
-};
+routes.delete('/uploads/:index', auth,
+  getUser,
+  min,
+  destroy,
+  ImageController.delete);
+
+routes.put('/uploads/:index', auth,
+  getUser,
+  ImageController.update);
+
+export default routes;
