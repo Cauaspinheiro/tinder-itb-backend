@@ -9,6 +9,8 @@ import user from '../middlewares/Global/user';
 import inLikes from '../middlewares/Likes/likes';
 import matches from '../middlewares/Likes/match';
 
+import errorId from '../errors/id';
+
 const routes = Router();
 
 routes.get('/profile/likes', auth,
@@ -31,5 +33,7 @@ routes.put('/profile/likes/:id', auth,
 routes.delete('/profile/likes', auth,
   user,
   LikeController.destroy);
+
+routes.use(errorId);
 
 export default routes;

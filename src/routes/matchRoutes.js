@@ -8,6 +8,7 @@ import user from '../middlewares/Global/user';
 import findUsers from '../middlewares/Match/findUsers';
 import includesUser from '../middlewares/Match/includesUser';
 
+import errorId from '../errors/id';
 
 const routes = Router();
 
@@ -21,5 +22,7 @@ routes.put('/profile/matchs', auth,
   targetUser,
   includesUser,
   MatchController.update);
+
+routes.use(errorId);
 
 export default routes;

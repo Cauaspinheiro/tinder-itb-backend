@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/node';
 import { Router } from 'express';
 
 import deslikesRoutes from './deslikesRoutes';
@@ -22,10 +21,5 @@ routes.use(profileRoutes);
 routes.use(schoolRoutes);
 routes.use(sessionRoutes);
 routes.use(userRoutes);
-
-routes.use((err, req, res, next) => {
-  Sentry.captureException(err);
-  return res.status(500).json(err);
-});
 
 export default routes;

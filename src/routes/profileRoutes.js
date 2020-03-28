@@ -13,6 +13,8 @@ import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
 
+import invalidId from '../errors/id';
+
 const routes = Router();
 
 routes.get('/profile', auth, user, ProfileController.show);
@@ -38,5 +40,7 @@ routes.put('/profile', auth,
 routes.delete('/profile', auth,
   user,
   ProfileController.destroy);
+
+routes.use(invalidId);
 
 export default routes;
