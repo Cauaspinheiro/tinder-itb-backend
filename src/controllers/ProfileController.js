@@ -18,6 +18,7 @@ export default {
       show_me: user.show_me,
       images: user.images,
       ano: user.ano,
+      periodo: user.periodo,
     };
 
     return res.status(200).json(response);
