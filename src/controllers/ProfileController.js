@@ -17,6 +17,7 @@ export default {
       contatos: user.contatos,
       show_me: user.show_me,
       images: user.images,
+      ano: user.ano,
     };
 
     return res.status(200).json(response);
