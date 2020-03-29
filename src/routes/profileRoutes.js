@@ -13,7 +13,7 @@ import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
 
-import invalidId from '../errors/id';
+import errorId from '../errors/id';
 
 const routes = Router();
 
@@ -41,6 +41,6 @@ routes.delete('/profile', auth,
   user,
   ProfileController.destroy);
 
-routes.use(invalidId);
+routes.use(errorId);
 
 export default routes;
