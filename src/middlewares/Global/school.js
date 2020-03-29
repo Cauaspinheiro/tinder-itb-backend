@@ -17,7 +17,7 @@ export default async (req, res, next) => {
 
   req.school = school;
 
-  req.body.nome_escola = school.nome;
+  req.body.nome_escola = school.local;
 
   return next();
 };
