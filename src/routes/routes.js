@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import notRoute from '../errors/notRoute';
 import deslikesRoutes from './deslikesRoutes';
 import imagesRoutes from './imagesRoutes';
 import likesRoutes from './likesRoutes';
@@ -21,5 +22,7 @@ routes.use(profileRoutes);
 routes.use(schoolRoutes);
 routes.use(sessionRoutes);
 routes.use(userRoutes);
+
+routes.use(notRoute);
 
 export default routes;
