@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import notRoute from '../errors/notRoute';
+import sendSentry from '../errors/sentry';
 import deslikesRoutes from './deslikesRoutes';
 import imagesRoutes from './imagesRoutes';
 import likesRoutes from './likesRoutes';
@@ -24,5 +25,7 @@ routes.use(sessionRoutes);
 routes.use(userRoutes);
 
 routes.use(notRoute);
+
+routes.use(sendSentry);
 
 export default routes;
