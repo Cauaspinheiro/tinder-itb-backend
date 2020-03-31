@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
 
+import parseJsonError from './errors/parseJson';
 import routes from './routes/routes';
 
 class App {
@@ -22,6 +23,7 @@ class App {
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
     this.server.use(express.json());
+    this.server.use(parseJsonError);
     this.server.use(cors());
     this.server.use(express.urlencoded({ extended: true }));
   }
