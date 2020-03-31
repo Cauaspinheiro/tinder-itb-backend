@@ -5,13 +5,7 @@ export default async (req, res, next) => {
 
   if (!escola) return next();
 
-  let school;
-
-  try {
-    school = await School.findOne({ _id: escola });
-  } catch (error) {
-    return res.status(400).json({ error: 'INCORRECT ID' });
-  }
+  const school = await School.findOne({ _id: escola });
 
   if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
