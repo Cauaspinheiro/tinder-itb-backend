@@ -8,7 +8,7 @@ import routes from './routes/routes';
 
 class App {
   constructor() {
-    if (process.env.SENTRY_DSN) {
+    if (process.env.SENTRY_DSN && !process.env.NODE_ENV) {
       Sentry.init({
         dsn: process.env.SENTRY_DSN,
         captureUnhandledRejections: true,
