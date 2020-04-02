@@ -8,7 +8,6 @@ import inArrays from '../middlewares/Global/inArray';
 import targetUser from '../middlewares/Global/targetUser';
 import user from '../middlewares/Global/user';
 
-import errorId from '../errors/id';
 
 const routes = Router();
 
@@ -31,7 +30,5 @@ routes.put('/profile/deslikes/:id', auth,
 routes.delete('/profile/deslikes', auth,
   user,
   DeslikeController.destroy);
-
-routes.use(errorId);
 
 export default routes;
