@@ -1,5 +1,7 @@
 import { Router } from 'express';
 
+import celebrateError from '../errors/celebrate';
+import errorId from '../errors/id';
 import notRoute from '../errors/notRoute';
 import sendSentry from '../errors/sentry';
 import deslikesRoutes from './deslikesRoutes';
@@ -26,6 +28,6 @@ routes.use(userRoutes);
 
 routes.use(notRoute);
 
-routes.use(sendSentry);
+routes.use(errorId, celebrateError, sendSentry);
 
 export default routes;
