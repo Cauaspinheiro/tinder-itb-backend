@@ -13,7 +13,7 @@ import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
 
-import errorId from '../errors/id';
+import profile from '../validation/profile';
 
 const routes = Router();
 
@@ -21,6 +21,7 @@ routes.get('/profile', auth, user, ProfileController.show);
 
 routes.post('/profile',
   notUser,
+  profile,
   checkInfo,
   passwordHash,
   getSchool,
@@ -40,7 +41,5 @@ routes.put('/profile', auth,
 routes.delete('/profile', auth,
   user,
   ProfileController.destroy);
-
-routes.use(errorId);
 
 export default routes;
