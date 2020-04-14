@@ -13,7 +13,7 @@ import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
 
-import profile from '../validation/profile';
+import profile from '../validation/profile/store';
 
 const routes = Router();
 
