@@ -9,12 +9,15 @@ import getCourses from '../middlewares/Prefs/courses';
 import notPrefs from '../middlewares/Prefs/notPrefs';
 import getPrefs from '../middlewares/Prefs/prefs';
 
+import validation from '../validation/prefs/store';
+
 
 const routes = Router();
 
 routes.post('/profile/prefs', auth,
   getUser,
   notPrefs,
+  validation,
   getSchool,
   getCourses,
   PrefsController.store);
