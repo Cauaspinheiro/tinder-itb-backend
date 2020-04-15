@@ -11,7 +11,9 @@ export default celebrate({
       let isValid = true;
 
       value.forEach((element) => {
-        if (!allowed.includes(element.toUpperCase())) isValid = false;
+        if (!isNaN(parseFloat(element)) && isFinite(element)) {
+          isValid = false;
+        } else if (!allowed.includes(element.toUpperCase())) isValid = false;
       });
 
       if (!isValid) return helpers.error('any.invalid');
@@ -26,7 +28,7 @@ export default celebrate({
       let isValid = true;
 
       value.forEach((element) => {
-        if (!allowed.includes(element.toUpperCase())) isValid = false;
+        if (!allowed.includes(element)) isValid = false;
       });
 
       if (!isValid) return helpers.error('any.invalid');
