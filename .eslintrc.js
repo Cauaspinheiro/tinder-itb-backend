@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     "no-param-reassign": "off",
     "camelcase": "off",
+    "no-restricted-globals": 0,
     "no-unused-vars": ["error", {"argsIgnorePattern": "next"}],
     'import-helpers/order-imports': [
       'warn',
@@ -32,6 +33,7 @@ module.exports = {
               ['parent', 'sibling', 'index'],
           ],
           alphabetize: { order: 'asc', ignoreCase: true },
+        
       },
   ],
   },
