@@ -15,9 +15,9 @@ import validation from '../validation/prefs/store';
 const routes = Router();
 
 routes.post('/profile/prefs', auth,
+  validation,
   getUser,
   notPrefs,
-  validation,
   getSchool,
   getCourses,
   PrefsController.store);
@@ -34,6 +34,7 @@ routes.delete('/profile/prefs', auth,
   PrefsController.destroy);
 
 routes.put('/profile/prefs', auth,
+  validation,
   getUser,
   getPrefs,
   getSchool,
