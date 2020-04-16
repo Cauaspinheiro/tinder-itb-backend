@@ -2,7 +2,7 @@ import School from '../models/School';
 
 export default {
   async index(req, res) {
-    const schools = await School.find({}, { cursos: 1, nome: 1, local: 1 });
+    const schools = await School.find({}, { courses: 1, name: 1, location: 1 });
 
     return res.status(200).json(schools);
   },
@@ -18,15 +18,15 @@ export default {
   },
 
   async store(req, res) {
-    const { nome } = req.body;
+    const { name } = req.body;
 
-    const school = await School.findOne({ nome });
+    const school = await School.findOne({ name });
 
-    if (school) return res.status(400).json('Escola já existe');
+    if (school) return res.status(400).json({ error: 'SCHOOL ALREADY EXISTS' });
 
-    const { id, nome: name } = await School.create(req.body);
+    const { id, name: school_name } = await School.create(req.body);
 
-    return res.status(201).json({ id, name });
+    return res.status(201).json({ id, school_name });
   },
 
   async update(req, res) {
@@ -34,11 +34,12 @@ export default {
 
     const school = await School.findOne({ _id });
 
-    if (!school) return res.status(404).json('School not found');
+    if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
-    const { cursos, nome, local } = await School.findOneAndUpdate({ _id }, req.body, { new: true });
+    const { courses, name, location } = await School.findOneAndUpdate({ _id },
+      req.body, { new: true });
 
-    return res.status(200).json({ cursos, nome, local });
+    return res.status(200).json({ courses, name, location });
   },
 
   async destroy(req, res) {
@@ -46,7 +47,7 @@ export default {
 
     const school = await School.findOne({ _id });
 
-    if (!school) return res.status(404).json('School not found');
+    if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
     await School.findOneAndDelete({ _id });
 

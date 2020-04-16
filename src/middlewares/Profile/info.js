@@ -1,10 +1,10 @@
 export default (req, res, next) => {
-  const { numero, twitter } = req.body.contatos;
+  const { number, twitter } = req.body.contatos;
 
-  if (numero) {
-    if (numero.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
+  if (number) {
+    if (number.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
 
-    if (numero.indexOf('5511') !== 0) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
+    if (number.indexOf('5511') !== 0) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
   }
 
   if (twitter) {

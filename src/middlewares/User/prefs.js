@@ -3,16 +3,16 @@ async function checkPrefs(req, res, next) {
 
   if (!user.prefs) return next();
 
-  if (user.prefs.cursos.length !== 0) {
-    req.prefs.curso = { $in: user.prefs.cursos };
+  if (user.prefs.courses.length !== 0) {
+    req.prefs.curso = { $in: user.prefs.courses };
   }
-  if (user.prefs.anos.length !== 0) {
-    req.prefs.ano = { $in: user.prefs.anos };
+  if (user.prefs.grades.length !== 0) {
+    req.prefs.ano = { $in: user.prefs.grades };
   }
-  if (user.prefs.generos.length !== 0) {
-    req.prefs.genero = { $in: user.prefs.generos };
+  if (user.prefs.genders.length !== 0) {
+    req.prefs.genero = { $in: user.prefs.genders };
   }
-  if (user.prefs.escola) req.prefs.escola = { $in: user.prefs.escola };
+  if (user.prefs.school) req.prefs.school = { $in: user.prefs.school };
 
   return next();
 }

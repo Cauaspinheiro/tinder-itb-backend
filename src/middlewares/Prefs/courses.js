@@ -1,18 +1,18 @@
 import School from '../../models/School';
 
 export default async (req, res, next) => {
-  let { cursos } = req.body;
+  let { courses } = req.body;
   let { school } = req;
 
-  if (!cursos) return next();
+  if (!courses) return next();
 
-  cursos = cursos.map((curso) => curso.toUpperCase());
+  courses = courses.map((course) => course.toUpperCase());
 
-  req.body.cursos = cursos;
+  req.body.courses = courses;
 
   if (!school) {
-    for await (const curso of cursos) {  // eslint-disable-line
-      school = await School.find({ cursos: { $in: curso } });
+    for await (const course of courses) {  // eslint-disable-line
+      school = await School.find({ courses: { $in: course } });
 
 
       if (school.length === 0) {
@@ -23,7 +23,7 @@ export default async (req, res, next) => {
     return next();
   }
 
-  school = await School.findOne({ _id: school.id, cursos: { $all: cursos } });
+  school = await School.findOne({ _id: school.id, courses: { $all: courses } });
 
 
   if (!school) return res.status(404).json({ error: 'COURSE NOT FOUND IN SCHOOL' });

@@ -1,12 +1,12 @@
 export default (req, res, next) => {
-  const { contatos } = req.body;
+  const { contacts } = req.body;
 
-  if (!contatos) return next();
+  if (!contacts) return next();
 
-  const { numero } = contatos;
+  const { number } = contacts;
 
-  if (numero) {
-    if (numero.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
+  if (number) {
+    if (number.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
   }
 
   return next();
