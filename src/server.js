@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/node';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
@@ -8,6 +9,10 @@ mongoose.connect(process.env.MONGO_KEY, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-});
+}).then(() => { app.listen(process.env.PORT || 3001); }).catch((err) => {
+  Sentry.captureException(err);
 
-app.listen(3001);
+  // eslint-disable-next-line no-console
+  console.error(err);
+  process.exit(1);
+});

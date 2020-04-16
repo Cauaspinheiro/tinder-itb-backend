@@ -1,17 +1,15 @@
 export default (req, res, next) => {
-  const { contatos, password } = req.body;
-
-  if (!contatos) return res.status(400).json({ error: 'CONTACTS NOT FOUND' });
-
-  const { numero } = contatos;
+  const { numero, twitter } = req.body.contatos;
 
   if (numero) {
     if (numero.length !== 13) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
+
+    if (numero.indexOf('5511') !== 0) return res.status(400).json({ error: 'INVALID PHONE NUMBER' });
   }
 
-  if (!password) return res.status(400).json({ error: 'PASSWORD NOT FOUND' });
-
-  if (password.length < 6) return res.status(400).json({ error: 'INVALID PASSWORD' });
+  if (twitter) {
+    if (twitter.indexOf('@') !== 0) return res.status(400).json({ error: 'INVALID TWITTER USERNAME' });
+  }
 
   req.body.show_me = true;
 

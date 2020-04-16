@@ -10,9 +10,9 @@ export default {
   async show(req, res) {
     const { id: _id } = req.params;
 
-    const school = await School.findOne({ _id }, { cursos: 1, nome: 1, local: 1 });
+    const school = await School.findOne({ _id });
 
-    if (!school) return res.status(404).json('School not found');
+    if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
     return res.status(200).json(school);
   },
@@ -44,11 +44,11 @@ export default {
   async destroy(req, res) {
     const { id: _id } = req.params;
 
-    let school = await School.findOne({ _id });
+    const school = await School.findOne({ _id });
 
     if (!school) return res.status(404).json('School not found');
 
-    school = await School.findOneAndDelete({ _id });
+    await School.findOneAndDelete({ _id });
 
     return res.status(204).end();
   },

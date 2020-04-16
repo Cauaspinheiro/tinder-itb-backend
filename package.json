@@ -1,13 +1,13 @@
 {
   "name": "tinder-itb-backend",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": "https://github.com/Cauaspinheiro/tinder-itb-backend.git",
   "author": "Cauaspinheiro <56241309+Cauaspinheiro@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "cross-env NODE_ENV=dev nodemon src/server.js",
     "ct": "git-cz",
-    "debug": "node --inspect-brk -r sucrase/register src/server.js",
+    "debug": "cross-env NODE_ENV=debug node --inspect-brk -r sucrase/register src/server.js",
     "start": "sucrase-node src/server.js"
   },
   "husky": {
@@ -23,19 +23,24 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^4.3.1",
+    "@sentry/node": "5.15.2",
     "bcryptjs": "^2.4.3",
+    "celebrate": "^12.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "firebase-admin": "^8.9.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.10",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "sucrase": "^3.12.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "commitizen": "^4.0.3",
+    "cross-env": "^7.0.2",
     "cz-conventional-changelog": "3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -43,8 +48,7 @@
     "eslint-plugin-import-helpers": "^1.0.2",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
-    "nodemon": "^2.0.2",
-    "sucrase": "^3.12.1"
+    "nodemon": "^2.0.2"
   },
   "config": {
     "commitizen": {

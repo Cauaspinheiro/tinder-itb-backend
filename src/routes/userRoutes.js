@@ -1,3 +1,5 @@
+import { Router } from 'express';
+
 import UserController from '../controllers/UserController';
 
 import auth from '../middlewares/Global/auth';
@@ -7,14 +9,17 @@ import prefs from '../middlewares/User/prefs';
 import searchParams from '../middlewares/User/search';
 
 
-export default (routes) => {
-  routes.get('/users', auth,
-    user,
-    searchParams,
-    prefs,
-    UserController.index);
+const routes = Router();
 
-  routes.get('/users/:id',
-    targetUser,
-    UserController.show);
-};
+routes.get('/users', auth,
+  user,
+  searchParams,
+  prefs,
+  UserController.index);
+
+routes.get('/users/:id',
+  targetUser,
+  UserController.show);
+
+
+export default routes;

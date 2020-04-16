@@ -1,3 +1,5 @@
+import { Router } from 'express';
+
 import PrefsController from '../controllers/PrefsController';
 
 import auth from '../middlewares/Global/auth';
@@ -7,29 +9,36 @@ import getCourses from '../middlewares/Prefs/courses';
 import notPrefs from '../middlewares/Prefs/notPrefs';
 import getPrefs from '../middlewares/Prefs/prefs';
 
-export default (routes) => {
-  routes.post('/profile/prefs', auth,
-    getUser,
-    notPrefs,
-    getSchool,
-    getCourses,
-    PrefsController.store);
+import validation from '../validation/prefs/store';
 
 
-  routes.get('/profile/prefs', auth,
-    getUser,
-    getPrefs,
-    PrefsController.show);
+const routes = Router();
 
-  routes.delete('/profile/prefs', auth,
-    getUser,
-    getPrefs,
-    PrefsController.destroy);
+routes.post('/profile/prefs', auth,
+  validation,
+  getUser,
+  notPrefs,
+  getSchool,
+  getCourses,
+  PrefsController.store);
 
-  routes.put('/profile/prefs', auth,
-    getUser,
-    getPrefs,
-    getSchool,
-    getCourses,
-    PrefsController.update);
-};
+
+routes.get('/profile/prefs', auth,
+  getUser,
+  getPrefs,
+  PrefsController.show);
+
+routes.delete('/profile/prefs', auth,
+  getUser,
+  getPrefs,
+  PrefsController.destroy);
+
+routes.put('/profile/prefs', auth,
+  validation,
+  getUser,
+  getPrefs,
+  getSchool,
+  getCourses,
+  PrefsController.update);
+
+export default routes;
