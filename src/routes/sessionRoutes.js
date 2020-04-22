@@ -9,6 +9,6 @@ import password from '../middlewares/Session/password';
 const routes = Router();
 
 routes.post('/sessions', email, password, SessionController.store);
-routes.get('/sessions', validate, (req, res) => res.status(204));
+routes.get('/sessions', validate, (req, res) => res.status(204).end());
 
 export default routes;
