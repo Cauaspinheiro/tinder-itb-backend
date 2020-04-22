@@ -17,20 +17,6 @@ export default {
     return res.status(201).json(user.likes);
   },
 
-  async update(req, res) {
-    const { targetUser, user } = req;
-
-    for (let i = 0; i < user.likes.length; i += 1) {
-      if (user.likes[i] == targetUser.id) { //eslint-disable-line
-        user.likes.splice(i, 1);
-      }
-    }
-
-    await user.save();
-
-    return res.status(200).json(user.likes);
-  },
-
   async destroy(req, res) {
     const { _id, likes } = req.user;
 
