@@ -4,7 +4,7 @@ import celebrateError from '../errors/celebrate';
 import errorId from '../errors/id';
 import notRoute from '../errors/notRoute';
 import sendSentry from '../errors/sentry';
-import deslikesRoutes from './deslikesRoutes';
+import dislikesRoutes from './dislikesRoutes';
 import imagesRoutes from './imagesRoutes';
 import likesRoutes from './likesRoutes';
 import matchsRoutes from './matchRoutes';
@@ -16,7 +16,7 @@ import userRoutes from './userRoutes';
 
 const routes = Router();
 
-routes.use(deslikesRoutes);
+routes.use(dislikesRoutes);
 routes.use(imagesRoutes);
 routes.use(likesRoutes);
 routes.use(matchsRoutes);

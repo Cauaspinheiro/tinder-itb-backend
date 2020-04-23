@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import DeslikeController from '../controllers/DeslikeController';
+import DislikeController from '../controllers/DislikeController';
 
 import auth from '../middlewares/Global/auth';
 import inArrays from '../middlewares/Global/inArray';
@@ -12,16 +12,16 @@ const routes = Router();
 
 routes.get('/profile/deslikes', auth,
   user,
-  DeslikeController.index);
+  DislikeController.index);
 
 routes.post('/profile/deslikes/:id', auth,
   user,
   targetUser,
   inArrays,
-  DeslikeController.store);
+  DislikeController.store);
 
 routes.delete('/profile/deslikes', auth,
   user,
-  DeslikeController.destroy);
+  DislikeController.destroy);
 
 export default routes;
