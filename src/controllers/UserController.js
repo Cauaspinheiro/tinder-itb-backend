@@ -18,6 +18,8 @@ export default {
       images: 1,
     }).skip(10 * (page - 1)).limit(10);
 
+    res.header('X-Total-Count', users.length);
+
     return res.status(200).json(users);
   },
 
