@@ -6,6 +6,7 @@ import auth from '../middlewares/Global/auth';
 import getSchool from '../middlewares/Global/school';
 import user from '../middlewares/Global/user';
 import getCourse from '../middlewares/Profile/course';
+import deleteImages from '../middlewares/Profile/deleteImages';
 import checkInfo from '../middlewares/Profile/info';
 import notUser from '../middlewares/Profile/notUser';
 import passwordHash from '../middlewares/Profile/password';
@@ -42,6 +43,7 @@ routes.put('/profile', auth,
 
 routes.delete('/profile', auth,
   user,
+  deleteImages,
   ProfileController.destroy);
 
 export default routes;
