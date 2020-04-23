@@ -18,6 +18,7 @@ export default {
       show_me: user.show_me,
       images: user.images,
       period: user.period,
+      prefs: user.prefs,
     };
 
     return res.status(200).json(response);
@@ -32,37 +33,9 @@ export default {
   async update(req, res) {
     const { _id } = req.user;
 
-    const {
-      name,
-      gender,
-      birthdate,
-      bio,
-      detalhes,
-      contacts,
-      grade,
-      period,
-      school_class,
-      show_me,
-      school_name,
-      course,
-    } = await User.findOneAndUpdate({ _id }, req.body, {
-      new: true,
-    });
+    await User.findOneAndUpdate({ _id }, req.body);
 
-    return res.status(200).json({
-      name,
-      gender,
-      birthdate,
-      bio,
-      detalhes,
-      contacts,
-      grade,
-      period,
-      school_class,
-      show_me,
-      school_name,
-      course,
-    });
+    return res.status(204).end();
   },
 
   async destroy(req, res) {

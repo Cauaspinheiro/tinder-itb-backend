@@ -10,6 +10,8 @@ import deleteImages from '../middlewares/Profile/deleteImages';
 import checkInfo from '../middlewares/Profile/info';
 import notUser from '../middlewares/Profile/notUser';
 import passwordHash from '../middlewares/Profile/password';
+import prefsCourse from '../middlewares/Profile/prefsCourse';
+import prefsSchool from '../middlewares/Profile/prefsSchool';
 import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
 import passwordUpdate from '../middlewares/Profile/Update/password';
@@ -25,6 +27,8 @@ routes.post('/profile',
   notUser,
   storeValidation,
   checkInfo,
+  prefsSchool,
+  prefsCourse,
   passwordHash,
   getSchool,
   getCourse,
@@ -36,6 +40,8 @@ routes.put('/profile', auth,
   user,
   passwordUpdate,
   passwordHash,
+  prefsSchool,
+  prefsCourse,
   contactUpdate,
   getSchool,
   courseUpdate,

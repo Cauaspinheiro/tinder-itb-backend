@@ -1,15 +1,11 @@
 import { Joi, celebrate, Segments } from 'celebrate';
 
+import validateGender from '../utils/validateGender';
+
 export default celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string(),
-    gender: Joi.string().custom((value, helpers) => {
-      const allowed = ['MASCULINO', 'FEMININO'];
-
-      if (!allowed.includes(value.toUpperCase())) return helpers.error('any.invalid');
-
-      return value;
-    }),
+    gender: Joi.string().custom(validateGender),
     birthdate: Joi.date(),
     bio: Joi.string(),
     email: Joi.string().email(),
@@ -25,7 +21,12 @@ export default celebrate({
     school_class: Joi.string().length(1).uppercase(),
     school: Joi.string(),
     course: Joi.string(),
-    prefs: Joi.object(),
     password: Joi.string().min(6),
+    prefs: Joi.object().keys({
+      school: Joi.string(),
+      gender: Joi.string().custom(validateGender),
+      grade: Joi.number().min(1).max(3),
+      course: Joi.string(),
+    }),
   }),
 });

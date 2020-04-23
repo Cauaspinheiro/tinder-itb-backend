@@ -9,5 +9,7 @@ export default async (req, res, next) => {
 
   if (!response) return res.status(404).json({ error: 'COURSE NOT FOUND' });
 
+  req.body.course = req.body.course.toUpperCase();
+
   return next();
 };
