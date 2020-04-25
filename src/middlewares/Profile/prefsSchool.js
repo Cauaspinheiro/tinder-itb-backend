@@ -13,9 +13,7 @@ export default async (req, res, next) => {
 
   if (!response) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
 
-  req.prefs = {
-    school: response,
-  };
+  req.prefsSchool = response;
 
   return next();
 };

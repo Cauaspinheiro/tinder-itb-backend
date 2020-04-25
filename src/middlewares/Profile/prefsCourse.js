@@ -5,7 +5,7 @@ export default async (req, res, next) => {
 
   const { course } = prefs;
 
-  const { school } = req.prefs;
+  const { prefsSchool: school } = req;
 
   if (!course) return next();
 
