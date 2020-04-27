@@ -14,7 +14,7 @@ export default {
 
     await user.save();
 
-    return res.status(201).json(user.likes);
+    return res.status(201).end();
   },
 
   async destroy(req, res) {

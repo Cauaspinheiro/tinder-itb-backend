@@ -32,6 +32,6 @@ export default {
     await user.save();
     await targetUser.save();
 
-    return res.status(200).json(user.matchs);
+    return res.status(204).end();
   },
 };
