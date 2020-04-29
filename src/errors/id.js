@@ -9,7 +9,7 @@ export default (err, req, res, next) => {
         pt_br: 'ID INVÁLIDO',
       },
       details: {
-        en_us: `Invalid id ${err.value} for search data in database, because it`
+        en_us: `Invalid ${err.value} id for search data in database, because it`
         + ' dont follow the required specifications. '
         + 'For more info go to '
         + 'https://docs.mongodb.com/manual/reference/bson-types/#objectid',
