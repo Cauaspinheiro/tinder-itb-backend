@@ -1,6 +1,6 @@
 import { Joi, celebrate, Segments } from 'celebrate';
 
-import joi from '../../errors/joi';
+import handleJoiErrors from '../../errors/joi';
 import validateGender from '../utils/validateGender';
 
 export default celebrate({
@@ -29,5 +29,5 @@ export default celebrate({
       grade: Joi.number().min(1).max(3),
       course: Joi.string(),
     }),
-  }).error(joi),
+  }).error(handleJoiErrors),
 });
