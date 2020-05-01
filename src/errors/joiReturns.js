@@ -273,3 +273,47 @@ export function maxNumber(error) {
 
   return error;
 }
+
+export function length(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR COM O TAMANHO `
+      + `${error.local.limit}`,
+    },
+    details: {
+      pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label}`,
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: { type: String.name, length: error.local.limit },
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
+
+export function minString(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR COM O TAMANHO `
+      + `MAIOR QUE ${error.local.limit}`,
+    },
+    details: {
+      pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label}`,
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: { type: String.name, length: `> ${error.local.limit}` },
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
