@@ -1,5 +1,7 @@
 import {
-  required, string, gender, date, maxDate, minDate, email, object, unknownField,
+  required, string, custom, date, maxDate, minDate, email, object, unknownField, number,
+  minNumber,
+  maxNumber,
 } from './joiReturns';
 
 export default (errors) => errors.map((error) => {
@@ -9,7 +11,7 @@ export default (errors) => errors.map((error) => {
     case 'string.base':
       return string(error);
     case 'any.invalid':
-      return gender(error);
+      return custom(error);
     case 'date.base':
       return date(error);
     case 'date.max':
@@ -22,6 +24,12 @@ export default (errors) => errors.map((error) => {
       return object(error);
     case 'object.unknown':
       return unknownField(error);
+    case 'number.base':
+      return number(error);
+    case 'number.min':
+      return minNumber(error);
+    case 'number.max':
+      return maxNumber(error);
     default:
       return error;
   }

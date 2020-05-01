@@ -45,7 +45,7 @@ export function string(error) {
   return error;
 }
 
-export function gender(error) {
+export function custom(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
@@ -53,13 +53,11 @@ export function gender(error) {
       + `${error.local.label.toUpperCase()}`,
     },
     details: {
-      pt_br: `O campo ${error.local.label} aceita apenas os valores MASCULINO e FEMININO`
-      + ' (não precisa estar em maiúsculo)',
+      pt_br: `O campo ${error.local.label} não aceita o valor ${error.local.value}`,
     },
     more_info: {
       label: error.local.label,
       value: error.local.value,
-      accepted_values: ['MASCULINO', 'FEMININO'],
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
@@ -202,6 +200,72 @@ export function unknownField(error) {
       label: error.local.label,
       key: error.local.key,
       value: error.local.value,
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
+
+export function number(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O VALOR ${error.local.value} NÃO É VALIDO PARA O CAMPO `
+      + `${error.local.label.toUpperCase()}`,
+    },
+    details: {
+      pt_br: `O campo ${error.local.label} aceita apenas valores numéricos`,
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: Number.name,
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
+
+export function minNumber(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label} PRECISA DE UM VALOR MAIOR OU IGUAL A `
+      + `${error.local.limit}`,
+    },
+    details: {
+      pt_br: `O valor ${error.local.value} não é válido para o campo ${error.local.label}`,
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: `>= ${error.local.limit}`,
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
+
+export function maxNumber(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label} PRECISA DE UM VALOR MENOR OU IGUAL A `
+      + `${error.local.limit}`,
+    },
+    details: {
+      pt_br: `O valor ${error.local.value} não é válido para o campo ${error.local.label}`,
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: `<= ${error.local.limit}`,
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
