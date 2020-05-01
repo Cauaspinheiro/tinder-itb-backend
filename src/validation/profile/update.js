@@ -10,7 +10,12 @@ export default celebrate({
     birthdate: Joi.date(),
     bio: Joi.string(),
     email: Joi.string().email(),
-    contacts: Joi.object().min(1).max(4),
+    contacts: Joi.object().keys({
+      instagram: Joi.string(),
+      number: Joi.number(),
+      facebook: Joi.string(),
+      twitter: Joi.string(),
+    }),
     grade: Joi.number().min(1).max(3),
     period: Joi.string().custom((value, helpers) => {
       const allowed = ['MANHÃ', 'TARDE', 'NOITE'];

@@ -7,11 +7,18 @@ export default celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),
     gender: Joi.string().required().custom(validateGender),
-    birthdate: Joi.date().min(new Date(`${new Date().getFullYear() - 25}-1-1`))
-      .max(new Date(`${new Date().getFullYear() - 12}-1-1`)).required(),
+    birthdate: Joi.date()
+      .min(new Date(`${new Date().getFullYear() - 25}-1-1`))
+      .max(new Date(`${new Date().getFullYear() - 12}-1-1`))
+      .required(),
     bio: Joi.string().required(),
     email: Joi.string().email().required(),
-    contacts: Joi.object().min(1).max(4).required(),
+    contacts: Joi.object().required().keys({
+      instagram: Joi.string(),
+      number: Joi.number(),
+      facebook: Joi.string(),
+      twitter: Joi.string(),
+    }),
     grade: Joi.number().min(1).max(3).required(),
     period: Joi.string().required().custom((value, helpers) => {
       const allowed = ['MANHÃ', 'TARDE', 'NOITE'];
