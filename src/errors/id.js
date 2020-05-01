@@ -24,7 +24,6 @@ export default (err, req, res, next) => {
         model: err.model.modelName,
         id: err.value,
       },
-      full_error: err,
     });
   }
 

@@ -16,14 +16,6 @@ export default (err, req, res, next) => {
         + 'https://dicasdeprogramacao.com.br/o-que-e-json/',
       },
       type: SyntaxError.name,
-      more_info: {
-        syntax_error: err.message,
-      },
-      full_error: {
-        message: err.message,
-        name: err.name,
-        stack: err.stack,
-      },
     });
   }
 

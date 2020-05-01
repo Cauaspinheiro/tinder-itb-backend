@@ -15,5 +15,4 @@ export default (req, res, next) => res.status(404).json({
     method: req.method,
     route: req.url,
   },
-  full_error: `CANNOT ${req.method} IN ${req.url}`,
 });
