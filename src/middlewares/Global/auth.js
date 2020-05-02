@@ -9,9 +9,11 @@ export default async (req, res, next) => {
   if (!auth) {
     return errorHandler(res, 401, {
       error: {
+        en_us: 'AUTHENTICATION TOKEN NOT FOUND',
         pt_br: 'TOKEN DE AUTENTICAÇÃO NÃO FOI ENCONTRADO',
       },
       details: {
+        en_us: 'The jwt token was not found',
         pt_br: 'O token jwt de autenticação, que serve para autenticar o usuário logado,'
         + ' não foi encontrado',
       },
@@ -31,8 +33,10 @@ export default async (req, res, next) => {
     return errorHandler(res, 401, {
       error: {
         pt_br: 'TOKEN DE AUTENTICAÇÃO INVÁLIDO',
+        en_us: 'INVALID AUTHENTICATION TOKEN',
       },
       details: {
+        en_us: 'The jwt token is invalid',
         pt_br: 'O token jwt de autenticação, que serve para autenticar o usuário logado,'
         + ' não é valido, provalmente porque ele expirou, crie um novo para continuar.',
       },
