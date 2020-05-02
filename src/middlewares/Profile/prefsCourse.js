@@ -1,3 +1,5 @@
+import errorHandler from '../../errors/errorsByStatus/400';
+
 export default async (req, res, next) => {
   const { prefs } = req.body;
 
@@ -10,7 +12,19 @@ export default async (req, res, next) => {
   if (!course) return next();
 
   if (!school) {
-    return res.status(400).json({ error: 'FOUND COURSE, BUT NOT SCHOOL' });
+    return errorHandler(res, {
+      error: {
+        en_us: 'FOUND COURSE, BUT NOT SCHOOL',
+        pt_br: 'ENCONTRADO CURSO, MAS NÃO ESCOLA',
+      },
+      details: {
+        en_us: 'You must provide a school for validate a course',
+        pt_br: 'Para validar o curso, você precisa definir uma escola também',
+      },
+      more_info: {
+        course,
+      },
+    });
   }
 
   if (!school.courses.includes(course.toUpperCase())) {

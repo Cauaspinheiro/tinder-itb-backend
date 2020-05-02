@@ -1,3 +1,4 @@
+import errorHandler from '../../errors/errorsByStatus/400';
 import User from '../../models/User';
 
 export default async (req, res, next) => {
@@ -5,7 +6,16 @@ export default async (req, res, next) => {
 
   const user = await User.findOne({ email });
 
-  if (user) return res.status(400).json({ error: 'USER ALREADY EXISTS' });
+  if (user) {
+    return errorHandler(res, {
+      error: {
+        pt_br: 'USUÁRIO JÁ EXISTE',
+      },
+      details: {
+        pt_br: `Já existe um usuário com o e-mail ${email}`,
+      },
+    });
+  }
 
   return next();
 };

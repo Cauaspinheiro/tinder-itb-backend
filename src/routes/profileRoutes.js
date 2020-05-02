@@ -12,9 +12,7 @@ import notUser from '../middlewares/Profile/notUser';
 import passwordHash from '../middlewares/Profile/password';
 import prefsCourse from '../middlewares/Profile/prefsCourse';
 import prefsSchool from '../middlewares/Profile/prefsSchool';
-import contactUpdate from '../middlewares/Profile/Update/contact';
 import courseUpdate from '../middlewares/Profile/Update/course';
-import passwordUpdate from '../middlewares/Profile/Update/password';
 
 import storeValidation from '../validation/profile/store';
 import updateValidation from '../validation/profile/update';
@@ -38,11 +36,10 @@ routes.post('/profile',
 routes.put('/profile', auth,
   updateValidation,
   user,
-  passwordUpdate,
   passwordHash,
   prefsSchool,
   prefsCourse,
-  contactUpdate,
+  checkInfo,
   getSchool,
   courseUpdate,
   ProfileController.update);
