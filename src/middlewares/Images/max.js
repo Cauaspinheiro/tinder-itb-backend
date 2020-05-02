@@ -1,10 +1,10 @@
-import errorHandler from '../../errors/errorsByStatus/400';
+import errorHandler from '../../errors/errorByStatus';
 
 export default (req, res, next) => {
   const { images } = req.user;
 
   if (images.length > 4) {
-    return errorHandler(res, {
+    return errorHandler(res, 400, {
       error: {
         pt_br: 'LIMITE DE IMAGENS EXCEDIDO',
       },

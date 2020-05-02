@@ -1,4 +1,4 @@
-import errorHandler from '../errors/errorsByStatus/400';
+import errorHandler from '../errors/errorByStatus';
 import User from '../models/User';
 
 
@@ -44,7 +44,7 @@ export default {
     const { images, _id } = req.user;
 
     if (index === '0' || index.isNaN) {
-      return errorHandler(res, {
+      return errorHandler(res, 400, {
         error: {
           pt_br: 'INDEX INVÁLIDO',
         },

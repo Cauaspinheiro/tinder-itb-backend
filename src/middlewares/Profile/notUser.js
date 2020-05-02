@@ -1,4 +1,4 @@
-import errorHandler from '../../errors/errorsByStatus/400';
+import errorHandler from '../../errors/errorByStatus';
 import User from '../../models/User';
 
 export default async (req, res, next) => {
@@ -7,7 +7,7 @@ export default async (req, res, next) => {
   const user = await User.findOne({ email });
 
   if (user) {
-    return errorHandler(res, {
+    return errorHandler(res, 400, {
       error: {
         pt_br: 'USUÁRIO JÁ EXISTE',
       },

@@ -1,4 +1,4 @@
-import errorHandler from '../../errors/errorsByStatus/400';
+import errorHandler from '../../errors/errorByStatus';
 
 export default async (req, res, next) => {
   const { prefs } = req.body;
@@ -12,7 +12,7 @@ export default async (req, res, next) => {
   if (!course) return next();
 
   if (!school) {
-    return errorHandler(res, {
+    return errorHandler(res, 400, {
       error: {
         en_us: 'FOUND COURSE, BUT NOT SCHOOL',
         pt_br: 'ENCONTRADO CURSO, MAS NÃO ESCOLA',

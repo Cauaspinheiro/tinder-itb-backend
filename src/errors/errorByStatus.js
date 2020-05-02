@@ -1,4 +1,4 @@
-export default (res, error) => {
+export default (res, statusError, error) => {
   if (!error) {
     throw new Error('INVALID ERROR JSON');
   }
@@ -11,8 +11,26 @@ export default (res, error) => {
     throw new Error('INVALID ERROR JSON: DETAILS.EN_US/PT_BR MUST BE PROVIDED');
   }
 
+  if (!statusError) throw new Error('STATUS NOT FOUND');
+
+  let status;
+
+  switch (statusError) {
+    case 400:
+      status = '400 Bad Request';
+      break;
+    case 401:
+      status = '401 Unauthorized';
+      break;
+    case 404:
+      status = '404 Not Found';
+      break;
+    default:
+      throw new Error('INVALID STATUS');
+  }
+
   return res.status(400).json({
-    status: '400 Bad Request',
+    status,
     error: {
       en_us: error.error.en_us,
       pt_br: error.error.pt_br,

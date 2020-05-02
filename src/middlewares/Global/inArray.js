@@ -1,11 +1,11 @@
-import errorHandler from '../../errors/errorsByStatus/400';
+import errorHandler from '../../errors/errorByStatus';
 
 export default (req, res, next) => {
   const { dislikes, likes, matchs } = req.user;
   const { _id: id } = req.targetUser;
 
   if (dislikes.includes(id) || likes.includes(id) || matchs.includes(id)) {
-    return errorHandler(res, {
+    return errorHandler(res, 400, {
       error: {
         pt_br: 'USUÁRIO JÁ ESTÁ EM MATCHS, LIKES OU DISLIKES',
       },
