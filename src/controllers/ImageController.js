@@ -21,7 +21,21 @@ export default {
 
     const image = images[index];
 
-    if (!image) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    if (!image) {
+      return errorHandler(res, 404, {
+        error: {
+          pt_br: 'IMAGEM NÃO ENCONTRADA',
+          en_us: 'IMAGE NOT FOUND',
+        },
+        details: {
+          pt_br: `Nenhuma imagem com o index ${index} foi encontrada.`,
+          en_us: `No image with the ${index} index`,
+        },
+        more_info: {
+          index,
+        },
+      });
+    }
 
     return res.status(200).json(image);
   },
@@ -57,7 +71,21 @@ export default {
       });
     }
 
-    if (!images[index]) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    if (!images[index]) {
+      return errorHandler(res, 404, {
+        error: {
+          pt_br: 'IMAGEM NÃO ENCONTRADA',
+          en_us: 'IMAGE NOT FOUND',
+        },
+        details: {
+          pt_br: `Nenhuma imagem com o index ${index} foi encontrada.`,
+          en_us: `No image with the ${index} index`,
+        },
+        more_info: {
+          index,
+        },
+      });
+    }
 
     const profile = images[0];
 
