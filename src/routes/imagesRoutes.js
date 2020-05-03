@@ -18,7 +18,7 @@ import multerConfig from '../config/multer';
 
 const routes = Router();
 
-routes.post('profile/uploads', auth,
+routes.post('/profile/uploads', auth,
   getUser,
   max,
   multer(multerConfig).single('file'),
@@ -28,21 +28,21 @@ routes.post('profile/uploads', auth,
   tmp,
   ImageController.store);
 
-routes.get('profile/uploads', auth,
+routes.get('/profile/uploads', auth,
   getUser,
   ImageController.index);
 
-routes.get('profile/uploads/:index', auth,
+routes.get('/profile/uploads/:index', auth,
   getUser,
   ImageController.show);
 
-routes.delete('profile/uploads/:index', auth,
+routes.delete('/profile/uploads/:index', auth,
   getUser,
   min,
   destroy,
   ImageController.delete);
 
-routes.put('profile/uploads/:index', auth,
+routes.put('/profile/uploads/:index', auth,
   getUser,
   ImageController.update);
 
