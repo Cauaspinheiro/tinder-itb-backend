@@ -28,6 +28,8 @@ export default async (req, res, next) => {
 
     req.id = decoded.id;
 
+    req.expiresIn = new Date(new Date().getTime() + decoded.exp);
+
     return next();
   } catch (err) {
     return errorHandler(res, 401, {

@@ -10,6 +10,7 @@ import password from '../middlewares/Session/password';
 const routes = Router();
 
 routes.post('/sessions', email, password, SessionController.store);
-routes.get('/sessions', validate, user, (req, res) => res.status(204).end());
+routes.get('/sessions', validate, user, (req, res) => res.status(200)
+  .json({ expires_in: req.expiresIn }));
 
 export default routes;

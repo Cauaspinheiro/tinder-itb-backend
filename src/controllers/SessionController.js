@@ -12,6 +12,7 @@ export default {
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES },
       ),
+      expires_in: process.env.JWT_EXPIRES,
     });
   },
 };
