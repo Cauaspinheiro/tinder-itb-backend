@@ -27,7 +27,12 @@ export default celebrate({
 
       return value;
     }),
-    school_class: Joi.string().length(1).required().uppercase(),
+    school_class: Joi.string().length(1).required().uppercase()
+      .custom((value, helpers) => {
+        if (!/^[a-zA-Z]/.test(value)) return helpers.error('any.custom');
+
+        return value;
+      }),
     school: Joi.string().required(),
     course: Joi.string().required(),
     password: Joi.string().min(6).required(),

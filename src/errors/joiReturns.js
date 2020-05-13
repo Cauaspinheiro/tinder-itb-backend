@@ -317,3 +317,25 @@ export function minString(error) {
 
   return error;
 }
+
+export function alphabetic(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR ALFABÉTICO`,
+    },
+    details: {
+      pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label},`
+       + ' porque ele precisa ser um valor alfabético (letras de A-Z)',
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      accepted_values: 'A-Z',
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}
