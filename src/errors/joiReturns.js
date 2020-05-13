@@ -339,3 +339,24 @@ export function alphabetic(error) {
 
   return error;
 }
+
+export function forbidden(error) {
+  error.message = {
+    status: DEFAULT.STATUS,
+    error: {
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} NÃO PODE SER PREENCHIDO`,
+    },
+    details: {
+      pt_br: `O campo ${error.local.label} não pode ser preenchido, já que ele tem um `
+      + 'lugar especifíco para isso.',
+    },
+    more_info: {
+      label: error.local.label,
+      value: error.local.value,
+      error_code: error.code,
+    },
+    type: DEFAULT.TYPE,
+  };
+
+  return error;
+}

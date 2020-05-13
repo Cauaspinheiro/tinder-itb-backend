@@ -1,6 +1,6 @@
 import {
   required, string, custom, date, maxDate, minDate, email, object, unknownField, number,
-  minNumber, maxNumber, length, minString, alphabetic,
+  minNumber, maxNumber, length, minString, alphabetic, forbidden,
 } from './joiReturns';
 
 export default (errors) => errors.map((error) => {
@@ -35,6 +35,8 @@ export default (errors) => errors.map((error) => {
       return minString(error);
     case 'any.custom':
       return alphabetic(error);
+    case 'any.unknown':
+      return forbidden(error);
     default:
       return error;
   }

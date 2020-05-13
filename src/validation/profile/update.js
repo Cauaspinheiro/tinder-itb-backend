@@ -38,5 +38,11 @@ export default celebrate({
       grade: Joi.number().min(1).max(3),
       course: Joi.string(),
     }),
+    images: Joi.forbidden(),
+    likes: Joi.forbidden(),
+    dislikes: Joi.forbidden(),
+    matchs: Joi.forbidden(),
+    password_hash: Joi.forbidden(),
+    new_matchs: Joi.forbidden(),
   }).error(handleJoiErrors),
 });
