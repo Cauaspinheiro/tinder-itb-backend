@@ -20,7 +20,7 @@ export default celebrate({
       twitter: Joi.string(),
     }),
     grade: Joi.number().min(1).max(3).required(),
-    period: Joi.string().required().custom((value, helpers) => {
+    shift: Joi.string().required().custom((value, helpers) => {
       const allowed = ['MANHÃ', 'TARDE', 'NOITE'];
 
       if (!allowed.includes(value.toUpperCase())) return helpers.error('any.invalid');

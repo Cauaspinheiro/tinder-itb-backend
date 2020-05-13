@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    period: {
+    shift: {
       type: String,
       required: true,
     },

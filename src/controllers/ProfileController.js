@@ -17,7 +17,7 @@ export default {
       contacts: user.contacts,
       show_me: user.show_me,
       images: user.images,
-      period: user.period,
+      shift: user.shift,
       prefs: user.prefs,
     };
 
