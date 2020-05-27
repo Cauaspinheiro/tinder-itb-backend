@@ -1,7 +1,10 @@
-![https://i.imgur.com/2uCy3e8.png](https://i.imgur.com/2uCy3e8.png)
+  ![https://i.imgur.com/2uCy3e8.png](https://i.imgur.com/2uCy3e8.png)
    
-### API do Tinder para estudantes do ITB
-
+  ### API do Tinder para estudantes do ITB
+  
+![GitHub](https://img.shields.io/github/license/Cauaspinheiro/tinder-itb-backend?style=for-the-badge)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Cauaspinheiro/tinder-itb-backend?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Cauaspinheiro/tinder-itb-backend?style=for-the-badge)
   
 # Sobre o projeto
 
@@ -108,6 +111,8 @@ O projeto foi criado com a intenção de melhorar o conhecimento dos desenvolved
 
 ## Servidor oficial da API
 
+![GitHub deployments](https://img.shields.io/github/deployments/cauaspinheiro/tinder-itb-backend/tinder-itb-backend?style=for-the-badge)
+
 - Acesse a url [http://tinder-itb-backend.herokuapp.com](http://tinder-itb-backend.herokuapp.com/schools)
 
 - Para entender os endpoints e as suas funcionalidades veja a **documentação da API**
@@ -135,6 +140,8 @@ O insomnia serve para você entender as funcionalidades da API e usá-las de for
 - Importe o projeto clicando nesse botão [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=tinder-itb-backend-v0.3.0&uri=https%3A%2F%2Fraw.githubusercontent.com%2FCauaspinheiro%2Finsomnia%2Fmaster%2Ftinder-itb-backend%2Ftinder-itb-insomnia-v0.3.0.json%3Ftoken%3DANNCZHPSRG4IA5AQZCLS2PK6MLQOM)
 
 # Licença  
+
+![GitHub](https://img.shields.io/github/license/Cauaspinheiro/tinder-itb-backend?style=for-the-badge)
 
 > Você pode ler toda a licença do projeto [aqui](https://github.com/Cauaspinheiro/tinder-itb-backend/blob/master/LICENSE)
 
