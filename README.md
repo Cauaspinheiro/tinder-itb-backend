@@ -342,3 +342,9 @@ O Visual Studio Code é um editor de código redefinido e otimizado para criar e
   
 
 Agradeçemos a todas essas ferramentas por nos ajudar a construir esse projeto ❤
+
+# Documentação da API
+
+Clicando nesse link você será redirecionado para a documentação da API, contendo toda a documentação das funcionalidades e recursos que ela pode oferecer.
+
+https://www.notion.so/Documenta-o-da-API-1205de0571684a9b8fb2f4bb1f4de55f
