@@ -10,17 +10,17 @@ import user from '../middlewares/Global/user';
 
 const routes = Router();
 
-routes.get('/profile/dislike', auth,
+routes.get('/profile/dislikes', auth,
   user,
   DislikeController.index);
 
-routes.post('/profile/dislike/:id', auth,
+routes.post('/profile/dislikes/:id', auth,
   user,
   targetUser,
   inArrays,
   DislikeController.store);
 
-routes.delete('/profile/dislike', auth,
+routes.delete('/profile/dislikes', auth,
   user,
   DislikeController.destroy);
 
