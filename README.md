@@ -125,7 +125,7 @@ O projeto foi criado com a intenção de melhorar o conhecimento dos desenvolved
 
 - Acesse a porta 3001 em [http://localhost:3001](http://localhost:3001/), caso você queira mudar a porta de acesso local, modifique o número da seguinte função em src > server.js
 
-      ![https://i.imgur.com/6SFfPGl.png](https://i.imgur.com/6SFfPGl.png)
+  ![https://i.imgur.com/6SFfPGl.png](https://i.imgur.com/6SFfPGl.png)
 
 - Para entender os endpoints e as suas funcionalidades veja a **documentação da API**
 
