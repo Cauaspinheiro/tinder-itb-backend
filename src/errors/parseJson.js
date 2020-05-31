@@ -1,3 +1,5 @@
+import documentation from '../constants/documentation';
+
 export default (err, req, res, next) => {
   if (err instanceof SyntaxError) {
     return res.status(400).json({
@@ -16,6 +18,7 @@ export default (err, req, res, next) => {
         + 'https://dicasdeprogramacao.com.br/o-que-e-json/',
       },
       type: SyntaxError.name,
+      documentation_link: documentation,
     });
   }
 

@@ -1,3 +1,5 @@
+import documentation from '../constants/documentation';
+
 export default (err, req, res, next) => {
   if (!err.kind) return next(err);
 
@@ -24,6 +26,7 @@ export default (err, req, res, next) => {
         model: err.model.modelName,
         id: err.value,
       },
+      documentation_link: documentation,
     });
   }
 

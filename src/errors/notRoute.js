@@ -1,3 +1,5 @@
+import documentation from '../constants/documentation';
+
 export default (req, res, next) => res.status(404).json({
   status: '404 Not Found',
   error: {
@@ -15,4 +17,5 @@ export default (req, res, next) => res.status(404).json({
     method: req.method,
     route: req.url,
   },
+  documentation_link: documentation,
 });

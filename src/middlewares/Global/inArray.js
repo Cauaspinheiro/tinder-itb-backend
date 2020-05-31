@@ -8,9 +8,11 @@ export default (req, res, next) => {
     return errorHandler(res, 400, {
       error: {
         pt_br: 'USUÁRIO JÁ ESTÁ EM MATCHS, LIKES OU DISLIKES',
+        en_us: 'USER ALREADY IN MATCHS, LIKES OR DISLIKES',
       },
       details: {
         pt_br: 'Você não pode colocar um usuário em mais de uma lista (matchs, likes ou dislikes)',
+        en_us: 'You cannot place a user on more than one list (matchs, likes ou dislikes)',
       },
     });
   }

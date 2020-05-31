@@ -1,3 +1,5 @@
+import documentation from '../constants/documentation';
+
 export default (res, statusError, error) => {
   if (!error) {
     throw new Error('INVALID ERROR JSON');
@@ -26,10 +28,10 @@ export default (res, statusError, error) => {
       status = '404 Not Found';
       break;
     default:
-      throw new Error('INVALID STATUS');
+      status = statusError;
   }
 
-  return res.status(400).json({
+  return res.status(!isNaN(statusError) ? statusError : 400).json({
     status,
     error: {
       en_us: error.error.en_us,
@@ -40,6 +42,7 @@ export default (res, statusError, error) => {
       pt_br: error.details.pt_br,
     },
     more_info: error.more_info,
+    documentation_link: documentation,
     type: error.type,
   });
 };

@@ -61,9 +61,11 @@ export default {
       return errorHandler(res, 400, {
         error: {
           pt_br: 'INDEX INVÁLIDO',
+          en_us: 'INVALID INDEX',
         },
         details: {
-          pt_br: 'o index precisa ser diferente um número e diferente de 0',
+          pt_br: 'o index precisa ser um número e diferente de 0',
+          en_us: 'the index must be a number and different from 0',
         },
         more_info: {
           index,

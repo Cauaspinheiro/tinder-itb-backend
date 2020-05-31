@@ -1,8 +1,10 @@
+import documentation from '../constants/documentation';
 import calculateAge from './utils/calculateAge';
 
 const DEFAULT = {
   STATUS: '400 Bad Request',
   TYPE: 'ValidationError',
+  DOCUMENTATION: documentation,
 };
 
 export function required(error) {
@@ -10,15 +12,18 @@ export function required(error) {
     status: DEFAULT.STATUS,
     error: {
       pt_br: `O CAMPO ${error.local.label.toUpperCase()} É OBRIGATÓRIO`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} IS REQUIRED`,
     },
     details: {
-      pt_br: `O campo ${error.local.label} é necessário para concluir essa requisição.`,
+      pt_br: `O campo ${error.local.label} é necessário para concluir essa requisição. Para mais informações acesse ${documentation}`,
+      en_us: `The field ${error.local.label} is required to finish this request. For more info access ${documentation}`,
     },
     more_info: {
       label: error.local.label,
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -28,18 +33,21 @@ export function string(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O VALOR ${error.local.value} NÃO É VALIDO PARA O CAMPO ${error.local.label.toUpperCase()}`,
+      pt_br: `O VALOR ${error.local.value.toUpperCase()} NÃO É VALIDO PARA O CAMPO ${error.local.label.toUpperCase()}`,
+      en_us: `The value ${error.local.value.toUpperCase()} must be a string`,
     },
     details: {
-      pt_br: `O campo ${error.local.label} aceita apenas strings.`,
+      pt_br: `O campo ${error.local.label} aceita apenas strings. Para mais informações acesse ${documentation}`,
+      en_us: `The field ${error.local.label} accept only strings. For more info access ${documentation}`,
     },
     more_info: {
       label: error.local.label,
       value: error.local.value,
-      accepted_values: 'String',
+      accepted_values: String.name,
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -51,9 +59,11 @@ export function custom(error) {
     error: {
       pt_br: `O VALOR ${error.local.value} NÃO É VALIDO PARA O CAMPO `
       + `${error.local.label.toUpperCase()}`,
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label.toUpperCase()}`,
     },
     details: {
-      pt_br: `O campo ${error.local.label} não aceita o valor ${error.local.value}`,
+      pt_br: `O campo ${error.local.label} não aceita o valor ${error.local.value}. Para mais informações acesse ${documentation}`,
+      en_us: `The field ${error.local.label} does not accept the value ${error.local.value}. For more info access ${documentation}`,
     },
     more_info: {
       label: error.local.label,
@@ -61,6 +71,7 @@ export function custom(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -72,10 +83,12 @@ export function date(error) {
     error: {
       pt_br: `O VALOR ${error.local.value} NÃO É VALIDO PARA O CAMPO `
       + `${error.local.label.toUpperCase()}`,
+      en_us: `The value ${error.local.value.toUpperCase()} must be a date`,
     },
     details: {
       pt_br: `O campo ${error.local.label} aceita apenas data válidas pelo JavaScript.`
       + ' Para mais informações acesse https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date',
+      en_us: `The field ${error.local.label} accept only valid JavaScript dates. for more info https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date `,
     },
     more_info: {
       label: error.local.label,
@@ -84,6 +97,7 @@ export function date(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -96,10 +110,12 @@ export function maxDate(error) {
     error: {
       pt_br: `VOCÊ PRECISA SER MAIOR QUE ${calculateAge(error.local.limit)} ANOS `
       + 'PARA ACESSAR',
+      en_us: `YOU MUST BE ${calculateAge(error.local.limit)} YEAR OLD OR MORE TO ACCESS`,
     },
     details: {
       pt_br: `O campo ${error.local.label} precisa de uma idade maior que`
-      + ` ${calculateAge(error.local.limit)} anos`,
+      + ` ${calculateAge(error.local.limit)} anos. Para mais informações acesse ${documentation}`,
+      en_us: `The field ${error.local.label} only accept a age greater than ${calculateAge(error.local.limit)}. For more info access ${documentation}`,
     },
     more_info: {
       label: error.local.label,
@@ -110,6 +126,7 @@ export function maxDate(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;

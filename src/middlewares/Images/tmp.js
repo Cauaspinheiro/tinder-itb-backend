@@ -5,10 +5,7 @@ export default (req, res, next) => {
   const { filename } = req.file;
 
   fs.unlink(path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', filename),
-    (err) => {
-      if (err) { return res.status(500).json({ error: 'SOMETHING WENT WRONG' }); }
-      return true;
-    });
+    (err) => err);
 
   return next();
 };
