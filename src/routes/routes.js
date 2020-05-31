@@ -9,12 +9,14 @@ import imagesRoutes from './imagesRoutes';
 import likesRoutes from './likesRoutes';
 import matchsRoutes from './matchRoutes';
 import profileRoutes from './profileRoutes';
+import rootRoutes from './rootRoutes';
 import schoolRoutes from './schoolRoutes';
 import sessionRoutes from './sessionRoutes';
 import userRoutes from './userRoutes';
 
 const routes = Router();
 
+routes.use(rootRoutes);
 routes.use(dislikesRoutes);
 routes.use(imagesRoutes);
 routes.use(likesRoutes);
