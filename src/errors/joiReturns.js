@@ -1,7 +1,7 @@
 import documentation from '../constants/documentation';
 import calculateAge from './utils/calculateAge';
 
-const DEFAULT = {
+export const DEFAULT = {
   STATUS: '400 Bad Request',
   TYPE: 'ValidationError',
   DOCUMENTATION: documentation,
@@ -133,25 +133,30 @@ export function maxDate(error) {
 }
 
 export function minDate(error) {
+  const age = calculateAge(error.local.limit);
+
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `VOCÊ PRECISA SER MENOR QUE ${calculateAge(error.local.limit)} ANOS `
+      pt_br: `VOCÊ PRECISA SER MENOR QUE ${age} ANOS `
       + 'PARA ACESSAR',
+      en_us: `YOU NEED TO BE UNDER ${age} to access`,
     },
     details: {
       pt_br: `O campo ${error.local.label} precisa de uma idade menor que`
-      + ` ${calculateAge(error.local.limit)} anos`,
+      + ` ${age} anos`,
+      en_us: `The ${error.local.label} field needs an age under ${age} `,
     },
     more_info: {
       label: error.local.label,
       value: error.local.value,
       accepted_values: `> ${new Date(error.local.limit).toDateString()}`,
       age_provided: calculateAge(error.local.value),
-      accepted_age: `> ${calculateAge(error.local.limit)}`,
+      accepted_age: `> ${age}`,
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -162,9 +167,11 @@ export function email(error) {
     status: DEFAULT.STATUS,
     error: {
       pt_br: `O VALOR ${error.local.value} NÃO É UM E-MAIL VÁLIDO`,
+      en_us: `THE VALUE ${error.local.value} IS NOT A VALID EMAIL`,
     },
     details: {
       pt_br: `O campo ${error.local.label} precisa de um e-mail válido`,
+      en_us: `The field ${error.local.label} must be a valid email`,
     },
     more_info: {
       label: error.local.label,
@@ -173,6 +180,7 @@ export function email(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -182,12 +190,15 @@ export function object(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O VALOR ${error.local.value} NÃO É UM OBJETO`,
+      pt_br: `O VALOR ${error.local.value} NÃO É UM OBJETO VÁLIDO`,
+      en_us: `THE VALUE ${error.local.value} IS NOT A VALID OBJECT`,
     },
     details: {
       pt_br: `O campo ${error.local.label} precisa ser um objeto válido. `
       + 'Para mais informações, acesse '
       + 'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Trabalhando_com_Objetos',
+      en_us: `The field ${error.local.label} must be a valid JavaScript object. For more info, access`
+      + ' https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects',
     },
     more_info: {
       label: error.local.label,
@@ -196,30 +207,34 @@ export function object(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
 }
 
 export function unknownField(error) {
+  const objectLabel = error.local.label.split('.')[0];
+
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O CAMPO ${error.local.label.split('.')[0]} NÃO ACEITA A PROPRIEDADE `
-      + `${error.local.child}`,
+      pt_br: `O CAMPO ${objectLabel.toUpperCase()} NÃO ACEITA A PROPRIEDADE ${error.local.child.toUpperCase()}`,
+      en_us: `The field ${objectLabel.toUpperCase()} DOES NOT ACCEPT THE PROPERTY ${error.local.child.toUpperCase()}`,
     },
     details: {
-      pt_br: `${error.local.child} não é uma propriedade válida para o objeto `
-      + `${error.local.label.split('.')[0]}`,
+      pt_br: `${error.local.child} não é uma propriedade válida para o objeto ${objectLabel}`,
+      en_us: `${error.local.child} is not a valid property for the object ${objectLabel}`,
     },
     more_info: {
-      object: error.local.label.split('.')[0],
+      object,
       label: error.local.label,
       key: error.local.key,
       value: error.local.value,
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -231,9 +246,11 @@ export function number(error) {
     error: {
       pt_br: `O VALOR ${error.local.value} NÃO É VALIDO PARA O CAMPO `
       + `${error.local.label.toUpperCase()}`,
+      en_us: `THE VALUE ${error.local.value} is not valid for the field ${error.local.label.toUpperCase()}`,
     },
     details: {
       pt_br: `O campo ${error.local.label} aceita apenas valores numéricos`,
+      en_us: `The field ${error.local.label} accept only numeric values`,
     },
     more_info: {
       label: error.local.label,
@@ -242,6 +259,7 @@ export function number(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -251,11 +269,13 @@ export function minNumber(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O CAMPO ${error.local.label} PRECISA DE UM VALOR MAIOR OU IGUAL A `
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR MAIOR OU IGUAL A `
       + `${error.local.limit}`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} NEEDS A VALUE GREATER OU EQUAL TO ${error.local.limit}`,
     },
     details: {
       pt_br: `O valor ${error.local.value} não é válido para o campo ${error.local.label}`,
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label}`,
     },
     more_info: {
       label: error.local.label,
@@ -264,6 +284,7 @@ export function minNumber(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -273,11 +294,13 @@ export function maxNumber(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O CAMPO ${error.local.label} PRECISA DE UM VALOR MENOR OU IGUAL A `
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR MENOR OU IGUAL A `
       + `${error.local.limit}`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} NEEDS A VALUE LOWER OR EQUAL TO ${error.local.limit}`,
     },
     details: {
       pt_br: `O valor ${error.local.value} não é válido para o campo ${error.local.label}`,
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label}`,
     },
     more_info: {
       label: error.local.label,
@@ -286,6 +309,7 @@ export function maxNumber(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -295,11 +319,12 @@ export function length(error) {
   error.message = {
     status: DEFAULT.STATUS,
     error: {
-      pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR COM O TAMANHO `
-      + `${error.local.limit}`,
+      pt_br: `O CAMPO ${error.local.label.toUpperCase()} TEM QUE TER ${error.local.limit} CARACTERES`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} MUST BE ${error.local.limit} CHARACTERS LONG`,
     },
     details: {
       pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label}`,
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label}`,
     },
     more_info: {
       label: error.local.label,
@@ -308,6 +333,7 @@ export function length(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -319,9 +345,11 @@ export function minString(error) {
     error: {
       pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR COM O TAMANHO `
       + `MAIOR QUE ${error.local.limit}`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} MUST BE GREATER THAN ${error.local.limit} CARACTERES LONG`,
     },
     details: {
       pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label}`,
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label}`,
     },
     more_info: {
       label: error.local.label,
@@ -330,6 +358,7 @@ export function minString(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -340,10 +369,12 @@ export function alphabetic(error) {
     status: DEFAULT.STATUS,
     error: {
       pt_br: `O CAMPO ${error.local.label.toUpperCase()} PRECISA DE UM VALOR ALFABÉTICO`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} NEEDS A ALPHABETIC VALUE`,
     },
     details: {
       pt_br: `O valor ${error.local.value} não é valido para o campo ${error.local.label},`
        + ' porque ele precisa ser um valor alfabético (letras de A-Z)',
+      en_us: `The value ${error.local.value} is not valid for the field ${error.local.label}.`,
     },
     more_info: {
       label: error.local.label,
@@ -352,6 +383,7 @@ export function alphabetic(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
@@ -362,10 +394,12 @@ export function forbidden(error) {
     status: DEFAULT.STATUS,
     error: {
       pt_br: `O CAMPO ${error.local.label.toUpperCase()} NÃO PODE SER PREENCHIDO`,
+      en_us: `THE FIELD ${error.local.label.toUpperCase()} CANNOT BE PROVIDED`,
     },
     details: {
       pt_br: `O campo ${error.local.label} não pode ser preenchido, já que ele tem um `
       + 'lugar especifíco para isso.',
+      en_us: `The field ${error.local.label} cannot be provided, since he has a specific place for it`,
     },
     more_info: {
       label: error.local.label,
@@ -373,7 +407,28 @@ export function forbidden(error) {
       error_code: error.code,
     },
     type: DEFAULT.TYPE,
+    documentation_link: DEFAULT.DOCUMENTATION,
   };
 
   return error;
 }
+
+export default {
+  defaults: DEFAULT,
+  required,
+  string,
+  custom,
+  date,
+  maxDate,
+  minDate,
+  email,
+  object,
+  unknownField,
+  number,
+  minNumber,
+  maxNumber,
+  length,
+  minString,
+  alphabetic,
+  forbidden,
+};
