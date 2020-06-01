@@ -19,6 +19,7 @@ export default {
       images: user.images,
       shift: user.shift,
       prefs: user.prefs,
+      email: user.email,
     };
 
     return res.status(200).json(response);
