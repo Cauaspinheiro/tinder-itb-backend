@@ -4,15 +4,15 @@ import PrefsSchema from './util/PrefsSchema';
 
 const UserSchema = new mongoose.Schema(
   {
-    nome: {
+    name: {
       type: String,
       required: true,
     },
-    genero: {
+    gender: {
       type: String,
       required: true,
     },
-    data_nascimento: {
+    birthdate: {
       type: Date,
       required: true,
     },
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    contatos: {
+    contacts: {
       type: Map,
       required: true,
     },
@@ -32,28 +32,28 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    ano: {
+    grade: {
       type: Number,
       required: true,
     },
-    periodo: {
+    shift: {
       type: String,
       required: true,
     },
-    sala: {
+    school_class: {
       type: String,
       required: true,
     },
-    nome_escola: {
+    school_name: {
       type: String,
       required: true,
     },
-    escola: {
+    school: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: 'School',
     },
-    curso: {
+    course: {
       type: String,
       required: true,
     },
@@ -64,7 +64,7 @@ const UserSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    deslikes: [
+    dislikes: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -76,7 +76,7 @@ const UserSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    novoMatchs: Number,
+    new_matchs: Number,
     password_hash: {
       type: String,
       required: true,

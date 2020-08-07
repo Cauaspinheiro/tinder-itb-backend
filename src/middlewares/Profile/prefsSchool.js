@@ -2,7 +2,11 @@ import errorByStatus from '../../errors/errorByStatus';
 import School from '../../models/School';
 
 export default async (req, res, next) => {
-  const { school } = req.body;
+  const { prefs } = req.body;
+
+  if (!prefs) return next();
+
+  const { school } = prefs;
 
   if (!school) return next();
 
@@ -15,8 +19,8 @@ export default async (req, res, next) => {
         en_us: 'SCHOOL NOT FOUND',
       },
       details: {
-        pt_br: `Nenhuma escola com o id ${school} foi encontrada.`,
-        en_us: `We dont have a school with the ${school} id`,
+        pt_br: 'Nenhuma escola foi encontrada com esse id',
+        en_us: 'We dont have a school with this id',
       },
       more_info: {
         id: school,
@@ -24,9 +28,7 @@ export default async (req, res, next) => {
     });
   }
 
-  req.school = response;
-
-  req.body.school_name = response.location;
+  req.prefsSchool = response;
 
   return next();
 };

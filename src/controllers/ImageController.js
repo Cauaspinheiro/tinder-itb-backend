@@ -1,4 +1,6 @@
+import errorHandler from '../errors/errorByStatus';
 import User from '../models/User';
+
 
 export default {
   async store(req, res) {
@@ -19,7 +21,21 @@ export default {
 
     const image = images[index];
 
-    if (!image) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    if (!image) {
+      return errorHandler(res, 404, {
+        error: {
+          pt_br: 'IMAGEM NÃO ENCONTRADA',
+          en_us: 'IMAGE NOT FOUND',
+        },
+        details: {
+          pt_br: `Nenhuma imagem com o index ${index} foi encontrada.`,
+          en_us: `No image with the ${index} index`,
+        },
+        more_info: {
+          index,
+        },
+      });
+    }
 
     return res.status(200).json(image);
   },
@@ -42,10 +58,36 @@ export default {
     const { images, _id } = req.user;
 
     if (index === '0' || index.isNaN) {
-      return res.status(400).json({ error: 'INDEX NOT VALID' });
+      return errorHandler(res, 400, {
+        error: {
+          pt_br: 'INDEX INVÁLIDO',
+          en_us: 'INVALID INDEX',
+        },
+        details: {
+          pt_br: 'o index precisa ser um número e diferente de 0',
+          en_us: 'the index must be a number and different from 0',
+        },
+        more_info: {
+          index,
+        },
+      });
     }
 
-    if (!images[index]) return res.status(404).json({ error: 'FILE NOT FOUND' });
+    if (!images[index]) {
+      return errorHandler(res, 404, {
+        error: {
+          pt_br: 'IMAGEM NÃO ENCONTRADA',
+          en_us: 'IMAGE NOT FOUND',
+        },
+        details: {
+          pt_br: `Nenhuma imagem com o index ${index} foi encontrada.`,
+          en_us: `No image with the ${index} index`,
+        },
+        more_info: {
+          index,
+        },
+      });
+    }
 
     const profile = images[0];
 

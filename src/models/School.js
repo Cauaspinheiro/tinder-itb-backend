@@ -2,15 +2,15 @@ import mongoose from 'mongoose';
 
 const SchoolSchema = new mongoose.Schema(
   {
-    nome: {
+    name: {
       type: String,
       required: true,
     },
-    local: {
+    location: {
       type: String,
       required: true,
     },
-    cursos: {
+    courses: {
       type: [String],
       required: true,
     },

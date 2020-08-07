@@ -5,20 +5,21 @@ export default {
     const { user } = req;
 
     const response = {
-      nome: user.nome,
+      name: user.name,
       bio: user.bio,
-      genero: user.genero,
-      data_nascimento: user.data_nascimento,
-      escola: user.escola,
-      nome_escola: user.nome_escola,
-      curso: user.curso,
-      serie: user.serie,
-      sala: user.sala,
-      contatos: user.contatos,
+      gender: user.gender,
+      birthdate: user.birthdate,
+      school: user.school,
+      school_name: user.school_name,
+      course: user.course,
+      grade: user.grade,
+      school_class: user.school_class,
+      contacts: user.contacts,
       show_me: user.show_me,
       images: user.images,
-      ano: user.ano,
-      periodo: user.periodo,
+      shift: user.shift,
+      prefs: user.prefs,
+      email: user.email,
     };
 
     return res.status(200).json(response);
@@ -33,37 +34,9 @@ export default {
   async update(req, res) {
     const { _id } = req.user;
 
-    const {
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    } = await User.findOneAndUpdate({ _id }, req.body, {
-      new: true,
-    });
+    await User.findOneAndUpdate({ _id }, req.body);
 
-    return res.status(200).json({
-      nome,
-      genero,
-      data_nascimento,
-      bio,
-      detalhes,
-      contatos,
-      ano,
-      periodo,
-      sala,
-      show_me,
-      nome_escola,
-      curso,
-    });
+    return res.status(204).end();
   },
 
   async destroy(req, res) {

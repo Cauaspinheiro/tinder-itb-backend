@@ -6,17 +6,19 @@ export default {
     const { page = 1 } = req.query;
 
     const users = await User.find(prefs, {
-      nome: 1,
-      genero: 1,
-      data_nascimento: 1,
+      name: 1,
+      gender: 1,
+      birthdate: 1,
       bio: 1,
-      ano: 1,
-      curso: 1,
-      periodo: 1,
-      nome_escola: 1,
-      sala: 1,
+      grade: 1,
+      course: 1,
+      shift: 1,
+      school_name: 1,
+      school_class: 1,
       images: 1,
     }).skip(10 * (page - 1)).limit(10);
+
+    res.header('X-Total-Count', users.length);
 
     return res.status(200).json(users);
   },
@@ -25,16 +27,15 @@ export default {
     const { targetUser: user } = req;
 
     const response = {
-      nome: user.nome,
-      genero: user.genero,
+      name: user.name,
+      gender: user.gender,
       bio: user.bio,
-      data_nascimento: user.data_nascimento,
-      detalhes: user.detalhes,
-      ano: user.ano,
-      periodo: user.periodo,
-      sala: user.sala,
-      nome_escola: user.nome_escola,
-      curso: user.curso,
+      birthdate: user.birthdate,
+      grade: user.grade,
+      shift: user.shift,
+      school_class: user.school_class,
+      school_name: user.school_name,
+      course: user.course,
       images: user.images,
     };
 

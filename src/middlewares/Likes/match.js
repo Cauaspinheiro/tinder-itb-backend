@@ -13,15 +13,15 @@ export default async (req, res, next) => {
   targetUser.matchs.push(user.id);
   user.matchs.push(targetUser);
 
-  if (!user.newMatchs) { user.newMatchs = 1; } else user.newMatchs += 1;
+  if (!user.new_matchs) { user.new_matchs = 1; } else user.new_matchs += 1;
 
-  if (!targetUser.newMatchs) {
-    targetUser.newMatchs = 1;
-  } else targetUser.newMatchs += 1;
+  if (!targetUser.new_matchs) {
+    targetUser.new_matchs = 1;
+  } else targetUser.new_matchs += 1;
 
 
   await targetUser.save();
   await user.save();
 
-  return res.status(200).json({ 'NEW MATCH': targetUser.id, newMatchs: user.newMatchs });
+  return res.status(200).json({ 'NEW MATCH': targetUser.id, new_matchs: user.new_matchs });
 };

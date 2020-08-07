@@ -16,7 +16,7 @@ routes.get('/profile/matchs', auth,
   findUsers,
   MatchController.index);
 
-routes.put('/profile/matchs', auth,
+routes.put('/profile/matchs/:id', auth,
   user,
   targetUser,
   includesUser,

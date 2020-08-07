@@ -7,7 +7,7 @@ export default (req, res, next) => {
   req.prefs.$and = [
     { _id: { $ne: id } },
     { _id: { $nin: user.likes } },
-    { _id: { $nin: user.deslikes } },
+    { _id: { $nin: user.dislikes } },
     { _id: { $nin: user.matchs } },
   ];
 

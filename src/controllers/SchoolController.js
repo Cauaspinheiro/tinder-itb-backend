@@ -1,8 +1,9 @@
+import errorByStatus from '../errors/errorByStatus';
 import School from '../models/School';
 
 export default {
   async index(req, res) {
-    const schools = await School.find({}, { cursos: 1, nome: 1, local: 1 });
+    const schools = await School.find({}, { courses: 1, name: 1, location: 1 });
 
     return res.status(200).json(schools);
   },
@@ -12,44 +13,22 @@ export default {
 
     const school = await School.findOne({ _id });
 
-    if (!school) return res.status(404).json({ error: 'SCHOOL NOT FOUND' });
+    if (!school) {
+      return errorByStatus(res, 404, {
+        error: {
+          pt_br: 'ESCOLA NÃO ENCONTRADA',
+          en_us: 'SCHOOL NOT FOUND',
+        },
+        details: {
+          pt_br: `Nenhuma escola com o id ${_id} foi encontrada.`,
+          en_us: `We dont have a school with the ${_id} id`,
+        },
+        more_info: {
+          id: _id,
+        },
+      });
+    }
 
     return res.status(200).json(school);
-  },
-
-  async store(req, res) {
-    const { nome } = req.body;
-
-    const school = await School.findOne({ nome });
-
-    if (school) return res.status(400).json('Escola já existe');
-
-    const { id, nome: name } = await School.create(req.body);
-
-    return res.status(201).json({ id, name });
-  },
-
-  async update(req, res) {
-    const { id: _id } = req.params;
-
-    const school = await School.findOne({ _id });
-
-    if (!school) return res.status(404).json('School not found');
-
-    const { cursos, nome, local } = await School.findOneAndUpdate({ _id }, req.body, { new: true });
-
-    return res.status(200).json({ cursos, nome, local });
-  },
-
-  async destroy(req, res) {
-    const { id: _id } = req.params;
-
-    const school = await School.findOne({ _id });
-
-    if (!school) return res.status(404).json('School not found');
-
-    await School.findOneAndDelete({ _id });
-
-    return res.status(204).end();
   },
 };
